@@ -52,7 +52,10 @@
                             <classpathPrefix>src/</classpathPrefix>
                             <mainClass>Main</mainClass>
                         </manifest>
-                    </archive>
+		</archive>
+		<systemPropertyVariables>
+                <java.awt.headless>true</java.awt.headless>
+            </systemPropertyVariables>
                 </configuration>
             </plugin>
 
