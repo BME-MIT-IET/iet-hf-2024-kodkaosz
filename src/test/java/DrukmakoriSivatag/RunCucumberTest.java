@@ -1,4 +1,4 @@
-package DrukmakoriSivatag;
+package test.java.DrukmakoriSivatag;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

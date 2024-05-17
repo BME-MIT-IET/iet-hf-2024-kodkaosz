@@ -1,4 +1,4 @@
-package DrukmakoriSivatag;
+package main.java.DrukmakoriSivatag;
 
 import static java.lang.Math.random;
 

@@ -1,4 +1,4 @@
-package DrukmakoriSivatag;
+package main.java.DrukmakoriSivatag;
 
 import java.io.*;
 import java.util.*;

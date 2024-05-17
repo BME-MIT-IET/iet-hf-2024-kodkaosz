@@ -1,4 +1,4 @@
-package DrukmakoriSivatag;
+package main.java.DrukmakoriSivatag;
 
 /**
  * Interfész, az összes aktív elem (forrás, ciszterna, pumpa) megvalósítja, ez felelős a periodikusan történő eseményeikért.
