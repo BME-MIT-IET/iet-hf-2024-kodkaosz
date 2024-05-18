@@ -20,11 +20,6 @@ public class WaterTank extends PipelineElement implements Tickable {
      */
     //private final Game game = (Game)Main.proto.getByName("g");
 
-    /**
-     * A WaterTank paraméter nélüli konstruktora.
-     */
-    public WaterTank() {}
-
     //
     // teszt dolog
     //
