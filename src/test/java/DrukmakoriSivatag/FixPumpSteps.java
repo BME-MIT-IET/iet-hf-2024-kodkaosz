@@ -3,10 +3,8 @@ package test.java.DrukmakoriSivatag;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import main.java.DrukmakoriSivatag.Pipe;
 import main.java.DrukmakoriSivatag.Plumber;
 import main.java.DrukmakoriSivatag.Pump;
-import main.java.DrukmakoriSivatag.Saboteur;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
