@@ -9,7 +9,7 @@ import java.security.SecureRandom;
 public class Random {
 
     /**
-     * Random object for generating random numbers
+     * SecureRandom objektum random értékek generálására
      */
     private final SecureRandom myRandom = new SecureRandom();
 
