@@ -77,13 +77,10 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <classpathPrefix>src/</classpathPrefix>
-                            <mainClass>Main</mainClass>
+			    <classpathPrefix>src</classpathPrefix>
+                            <mainClass>main.java.DrukmakoriSivatag.Main</mainClass>
                         </manifest>
                     </archive>
-                    <systemPropertyVariables>
-                        <java.awt.headless>true</java.awt.headless>
-                    </systemPropertyVariables>
                 </configuration>
             </plugin>
 

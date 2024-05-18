@@ -1,1 +1,15 @@
 target/*
+
+# IntelliJ IDEA
+.idea
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/

@@ -1,0 +1,10 @@
+PumpTank pumpTank storedWater:0;capacity:5
+Pump pump neighbors:damagedPipe,goodPipe,endPipe1,endPipe2;isPickedUp:false;pumpTank:pumpTank;isDamaged:false;toPipeIdx:0;fromPipeIdx:1
+Saboteur playerOnPump stuckCounter:0;element:pump
+Pipe damagedPipe neighbors:pump;isPickedUp:false;capacity:5;waterLevel:0;isDamaged:true;isSlippery:false;fixedTime:0;isSticky:false
+Pipe goodPipe neighbors:pump;isPickedUp:false;capacity:5;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Pipe endPipe1 neighbors:pump,waterTank1;isPickedUp:false;capacity:5;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Pipe endPipe2 neighbors:pump,waterTank2;isPickedUp:false;capacity:5;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+WaterTank waterTank1 neighbors:endPipe1;isPickedUp:false;waterLevel:0
+WaterTank waterTank2 neighbors:endPipe2;isPickedUp:false;waterLevel:0
+WaterSource waterSource neighbors:goodPipe,damagedPipe;isPickedUp:false

@@ -1,0 +1,9 @@
+Desert desert neighbors:pipe2;isPickedUp:false
+PumpTank pumpTank storedWater:0;capacity:5
+WaterSource waterSource neighbors:pipe1;isPickedUp:false
+WaterTank waterTank neighbors:pipe3;isPickedUp:false;waterLevel:0
+Pump pump neighbors:pipe1,pipe2,pipe3;isPickedUp:false;pumpTank:pumpTank;isDamaged:false;toPipeIdx:0;fromPipeIdx:1
+Pipe pipe1 neighbors:waterSource,pump;isPickedUp:false;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Pipe pipe2 neighbors:pump,desert;isPickedUp:false;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Pipe pipe3 neighbors:pump,waterTank;isPickedUp:false;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Saboteur player stuckCounter:0;element:pump
