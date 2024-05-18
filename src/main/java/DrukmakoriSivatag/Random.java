@@ -1,5 +1,6 @@
 package main.java.DrukmakoriSivatag;
 
+import java.security.SecureRandom;
 
 /**
  * Ez az osztály minden olyan eseményért felelős, ami véletlen következik be. Ilyen például a pumpa
@@ -10,7 +11,7 @@ public class Random {
     /**
      * Random object for generating random numbers
      */
-    private final java.util.Random myRandom = new java.util.Random();
+    private final SecureRandom myRandom = new SecureRandom();
 
     /**
      * Egy random generált érték alapján eldönti, hogy elromoljon-e a pumpa, vagy sem, majd visszatér a döntéssel
