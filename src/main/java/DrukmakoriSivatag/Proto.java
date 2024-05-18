@@ -199,10 +199,9 @@ public class Proto {
             cmd = parseCommand(readCommand());
         }
         while (cmd != null && !isOver) {
-            while (cmd.get(0).isEmpty()){
+            while (cmd.get(0).isEmpty()) {
                 cmd = parseCommand(readCommand());
             }
-            System.out.println(cmd.size());
             try {
                 commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<String>(cmd.subList(1, cmd.size())) : null);
             } catch (Exception e) {
