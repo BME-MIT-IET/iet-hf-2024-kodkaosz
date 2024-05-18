@@ -1,4 +1,4 @@
-package DrukmakoriSivatag;
+package main.java.DrukmakoriSivatag;
 
 public class Main {
     public static Proto proto = new Proto();

@@ -1,0 +1,8 @@
+PumpTank pumpTank1 storedWater:0;capacity:5
+PumpTank pumpTank2 storedWater:0;capacity:5
+Pump pump1 neighbors:pipe2,pipe;isPickedUp:false;pumpTank:pumpTank1;isDamaged:false;toPipeIdx:0;fromPipeIdx:1
+Pump pump2 neighbors:pipe,pipe2;isPickedUp:false;pumpTank:pumpTank2;isDamaged:false;toPipeIdx:0;fromPipeIdx:1
+Pipe pipe neighbors:pump1,pump2;isPickedUp:false;capacity:5;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Pipe pipe2 neighbors:pump1,pump2;isPickedUp:false;capacity:5;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Saboteur saboteur stuckCounter:0;element:pipe
+Plumber victim stuckCounter:0;pickedUpPipe:null;pickedUpPump:null;element:pipe

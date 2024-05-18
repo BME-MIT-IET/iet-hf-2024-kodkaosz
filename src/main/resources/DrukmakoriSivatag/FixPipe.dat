@@ -1,0 +1,4 @@
+Plumber playerOnPipe stuckCounter:0;pickedUpPipe:null;pickedUpPump:null;element:pipe
+Pipe pipe neighbors:waterSource,desert;isPickedUp:false;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Desert desert neighbors:pipe;isPickedUp:false
+WaterSource waterSource neighbors:pipe;isPickedUp:false
