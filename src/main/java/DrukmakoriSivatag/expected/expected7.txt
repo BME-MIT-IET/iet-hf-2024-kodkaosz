@@ -1,6 +1,0 @@
-Pálya betöltése sikeres.
-Csõvég felvétele sikeres.
-Csõvég felvétele sikeres.
-Pipe pipe neighbors:;isPickedUp:true;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
-Plumber plumber stuckCounter:0;pickedUpPipe:pipe;pickedUpPump:null;element:pump1
-Plumber plumber2 stuckCounter:0;pickedUpPipe:pipe;pickedUpPump:null;element:pump2

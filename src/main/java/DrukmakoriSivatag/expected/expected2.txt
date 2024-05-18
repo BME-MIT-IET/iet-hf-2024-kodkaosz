@@ -1,6 +1,0 @@
-Pálya betöltése sikeres.
-Rongálás sikeres.
-Javítás sikeres.
-A csõ nem lyukasztható ki ennyi ideig: 5.
-Rongálás sikertelen.
-Pipe pipe neighbors:waterSource,desert;isPickedUp:false;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:5;isSticky:false

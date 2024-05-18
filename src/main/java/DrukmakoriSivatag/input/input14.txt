@@ -1,6 +1,0 @@
-load SeepWaterFromPipe.dat debug
-dbgTickAll
-state pipe
-state waterTank
-plumberPoints
-saboteurPoints

@@ -1,6 +1,0 @@
-load DamageDamageablePipe.dat debug
-damage playerOnPipe
-repair playerOnPipe
-dbgSetLeakable pipe 5
-damage playerOnPipe
-state pipe

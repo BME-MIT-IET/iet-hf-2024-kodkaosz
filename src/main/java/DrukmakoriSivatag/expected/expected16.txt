@@ -1,7 +1,0 @@
-Pálya betöltése sikeres.
-Ragadóssá tevés sikeres.
-Pipe pipe neighbors:pump1,pump2;isPickedUp:false;capacity:5;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:true
-Új pozíció: pump1.
-Új pozíció: pipe.
-Új pozíció: pipe.
-Ragadóssá tevés sikertelen.
