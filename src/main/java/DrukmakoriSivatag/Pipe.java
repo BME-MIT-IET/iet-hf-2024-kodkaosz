@@ -41,11 +41,6 @@ public class Pipe extends PipelineElement implements Tickable {
     //private Game game = (Game)Main.proto.getByName("g");
 
     /**
-     * A Pipe osztály paraméter nélküli konstruktora.
-     */
-    public Pipe() {}
-
-    /**
      * Fájl input szerint beállítja a kapott objektumot.
      * @param obj a beállítani kívánt objektum
      * @param params a paramétereket stringként a megfelelő formában tartalmazó lista
