@@ -199,14 +199,16 @@ public class Proto {
             cmd = parseCommand(readCommand());
         }
         while (cmd != null && !isOver) {
-            try {
-                commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<String>(cmd.subList(1, cmd.size())) : null);
-                cmd = parseCommand(readCommand());
-            } finally {
-                System.out.println("Hibás parancs");
+            while (cmd.get(0).isEmpty()){
                 cmd = parseCommand(readCommand());
             }
-
+            System.out.println(cmd.size());
+            try {
+                commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<String>(cmd.subList(1, cmd.size())) : null);
+            } catch (Exception e) {
+                System.out.println("Hibás parancs");
+            }
+            cmd = parseCommand(readCommand());
         }
         if (cmd == null) {
             System.exit(0);
