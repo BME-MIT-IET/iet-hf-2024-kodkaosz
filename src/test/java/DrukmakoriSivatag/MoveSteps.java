@@ -7,8 +7,10 @@ import main.java.DrukmakoriSivatag.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MoveToFreeSteps {
+public class MoveSteps {
     private Saboteur saboteur;
+
+    private Plumber plumber;
     private WaterTank waterTank;
     private WaterSource waterSource;
     private Desert desert;
@@ -18,6 +20,38 @@ public class MoveToFreeSteps {
     private Pipe pipe3;
     private PipelineElement from;
     private PipelineElement to;
+
+    @Given("^Saboteur is  on a pump$")
+    public void saboteur_is_on_a_pump(){
+        saboteur = new Saboteur();
+        plumber = new Plumber();
+        pipe1 = new Pipe();
+        pump = new Pump();
+
+        pipe1.addNeighbor(pump);
+
+        pump.accept(saboteur);
+        saboteur.setPipelineElement(pump);
+
+        pipe1.accept(plumber);
+        plumber.setPipelineElement(pipe1);
+    }
+
+    @Given("^Saboteur is  on a pipe$")
+    public void saboteur_is_on_a_pipe(){
+        saboteur = new Saboteur();
+        plumber = new Plumber();
+        pipe1 = new Pipe();
+        pump = new Pump();
+
+        pipe1.addNeighbor(pump);
+
+        pipe1.accept(saboteur);
+        saboteur.setPipelineElement(pipe1);
+
+        pump.accept(plumber);
+        plumber.setPipelineElement(pump);
+    }
 
     @Given("^Saboteur is  on the watertank$")
     public void saboteur_is_on_the_watertank(){
@@ -42,7 +76,22 @@ public class MoveToFreeSteps {
         waterTank.accept(saboteur);
         saboteur.setPipelineElement(waterTank);
     }
-
+    @When("^Plumber moves to sticky pipe$")
+    public void plumber_moves_to_sticky_pipe() {
+        from = plumber.getPipelineElement();
+        plumber.move(0);
+        to = plumber.getPipelineElement();
+    }
+    @When("^Saboteur makes the element sticky$")
+    public void saboteur_makes_the_element_sticky() {
+        saboteur.makeSticky();
+    }
+    @When("^Saboteur moves to occupied pipe$")
+    public void saboteur_moves_to_occupied_pipe() {
+        from = saboteur.getPipelineElement();
+        saboteur.move(0);
+        to = saboteur.getPipelineElement();
+    }
     @When("^Saboteur moves to pipe1$")
     public void saboteur_moves_to_pipe1() {
         from = saboteur.getPipelineElement();
@@ -54,6 +103,13 @@ public class MoveToFreeSteps {
         from = saboteur.getPipelineElement();
         saboteur.move(0);
         to = saboteur.getPipelineElement();
+    }
+
+    @When("^Plumber moves to pump$")
+    public void plumber_moves_to_pump() {
+        from = plumber.getPipelineElement();
+        plumber.move(0);
+        to = plumber.getPipelineElement();
     }
 
     @When("^Saboteur moves to pipe2$")
@@ -92,5 +148,20 @@ public class MoveToFreeSteps {
     public void move_was_not_successful()  {
         boolean success = from!=to;
         assertEquals(false, success);
+    }
+
+    @Then("^The pipe is sticky$")
+    public void the_pipe_is_sticky() {
+        assertEquals(true, pipe1.getIsSticky());
+    }
+
+    @Then("^The pipe is not sticky$")
+    public void the_pipe_is_not_sticky() {
+        assertEquals(false, pipe1.getIsSticky());
+    }
+
+    @Then("^The pump is not sticky$")
+    public void the_pump_is_not_sticky() {
+        assertEquals(false, pump.getIsSticky());
     }
 }
