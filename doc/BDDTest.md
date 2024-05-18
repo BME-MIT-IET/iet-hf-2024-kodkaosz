@@ -40,6 +40,29 @@ Ez a teszteset a csővégek lecsatlakoztatását és felcsatlakoztatását teszt
     - A felcsatlakoztatást követően, a játékos pickedUpPipe referenciája null és a felcsatlakoztatott cső isPickedUp tagváltozója false
     - Ha már van egy felvett csővég a játékosnál, nem tud felvenni újat
 
+## PlaceNewPump test
+- Leírás:
+Ez a teszteset a ciszternák által generált pumpák felvevését, illetve lerakását teszteli. Egy ciszternán lévő játékos megpróbál egy új pumpát felvenni és lerakni egy csőre. Ez a teszteset azt is teszteli, hogy ha nincs a játékosnál egy felvett pumpa, akkor természetesen nem sikerül a letevés, illetve, ha már felvett a játékos egy pumpát, nem tud felvenni még egy pumpát.
+
+- Ellenőrzött funkcionalitás, várható hibahelyek:
+    - Sikeresen generált egy pumpát a ciszterna
+    - A generált pumpa isPickedUp tagváltozója megfelelően változik a felvevést követően (isPickedUp = true)
+    - A játékos pickedUpPump referenciája nem null (pickedUpPump != null)
+    - Ha a játékosnak nincs pumpája (a letevést követően), akkor nem sikerül letenni egy pumpát
+
+## MoveToFree test
+- Leírás:
+Ez a teszteset a játékosok mozgását teszteli. A teszteset minden elemre való lépést teszteli, de egyelőre csak szabad elemek vannak.
+
+- Ellenőrzött funkcionalitás, várható hibahelyek:
+    - Sivatagra meg forrásra nem tud lépni a játékos
+    - Minden más elemre sikeres a move függvény hívás
+    - Minden lépéskor a játékos element referenciája megváltozik 
+
+
+
+
+
 
 
 
