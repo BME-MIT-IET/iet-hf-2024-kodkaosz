@@ -132,6 +132,7 @@ public class Plumber extends Person{
         if(pickedUpPump!=null) {
             success = element.split(pickedUpPump);
             if(success) {
+                pickedUpPump.setIsPickedUp(false);
                 setPickedUpPump(null);
             }
         }

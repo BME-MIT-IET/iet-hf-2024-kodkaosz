@@ -250,5 +250,8 @@ public class Pump extends PipelineElement implements Tickable {
     }
 
     public boolean getIsDamaged(){return this.isDamaged;}
+    public boolean getIsPickedUp(){
+        return this.isPickedUp;
+    }
 
 }

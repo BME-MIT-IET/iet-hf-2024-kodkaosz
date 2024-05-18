@@ -157,6 +157,7 @@ public class WaterTank extends PipelineElement implements Tickable {
     public Pump pickUpPump(Person p) {
         Pump newPump = createPump();
         p.setPickedUpPump(newPump);
+        newPump.setIsPickedUp(true);
         return newPump;
     }
 
