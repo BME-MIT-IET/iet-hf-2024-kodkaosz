@@ -17,11 +17,6 @@ public class Pump extends PipelineElement implements Tickable {
     PumpTank pumpTank;
 
     /**
-     * A Pump osztály konstruktora.
-     */
-    public Pump() { }
-
-    /**
      * Az objektum állapotát egy megfelelő formátumú stringbe írja.
      * @return az objektum string formában
      */
