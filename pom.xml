@@ -53,9 +53,6 @@
                             <mainClass>Main</mainClass>
                         </manifest>
 		</archive>
-		<systemPropertyVariables>
-                <java.awt.headless>true</java.awt.headless>
-            </systemPropertyVariables>
                 </configuration>
             </plugin>
 

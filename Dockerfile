@@ -13,8 +13,13 @@ RUN yum -y install libXext.x86_64
 RUN yum -y install libXrender.x86_64
 RUN yum -y install libXtst.x86_64
 
+RUN yum -y install maven
+
 # COPY location of jar from local repository to the image
-COPY ./target /usr/local/target
+#COPY . /usr/local/proj
+WORKDIR /apps
+COPY . /apps
 
 # Start the image with the jar file as the entrypoint
-ENTRYPOINT ["java", "-jar", "/usr/local/target/hu.bme.projlab-0.5.0-SNAPSHOT.jar"]
+#ENTRYPOINT ["java", "-jar", "/usr/local/proj/target/hu.bme.projlab-0.5.0-SNAPSHOT.jar"]
+CMD mvn exec:java -Dexec.mainClass="Main"
