@@ -1,6 +1,5 @@
 package main.java.DrukmakoriSivatag;
 
-import static java.lang.Math.random;
 
 /**
  * Ez az osztály minden olyan eseményért felelős, ami véletlen következik be. Ilyen például a pumpa
@@ -9,18 +8,20 @@ import static java.lang.Math.random;
 public class Random {
 
     /**
+     * Random object for generating random numbers
+     */
+    private final java.util.Random myRandom = new java.util.Random();
+
+    /**
      *  Egy random generált érték alapján eldönti, hogy elromoljon-e a pumpa, vagy sem, majd visszatér a döntéssel
      * @return true, ha elromoljon a pumpa, false, ha ne
      */
-    public boolean decidePump(){
-        if(Main.proto.getIsDebug()){
+    public boolean decidePump() {
+        if (Main.proto.getIsDebug()) {
             return true;
         }
-        int sz = (int) (random() * 100);
-        if (sz % 2 == 0) {
-            return true;
-        }
-        return false;
+
+        return myRandom.nextInt(2) == 0;
     }
 
     /**
@@ -29,14 +30,11 @@ public class Random {
      * @return true, ha jöjjön létre új cső, false, ha ne
      */
     public boolean decideNewPipe(){
-        if(Main.proto.getIsDebug()){
+        if (Main.proto.getIsDebug()) {
             return false; // ne jöjjenek létre random csövek, amikor nem szamitunk rajuk
         }
-        int sz= (int) (random() * 100);
-        if(sz%2==0){
-            return true;
-        }
-        return false;
+
+        return myRandom.nextInt(2) == 0;
     }
 
     /**
@@ -44,12 +42,12 @@ public class Random {
      * vele. Ha egy csőnek a fixedTime értéke nem nulla, nem lehet kilyukasztani.
      * @return random javítási idő
      */
-    public int decideFixedTime(){
-        if(Main.proto.getIsDebug()==true){
+    public int decideFixedTime() {
+        if (Main.proto.getIsDebug()) {
             return 3;
         }
-        java.util.Random random= new java.util.Random();
-        return random.nextInt(5)+1;
+
+        return myRandom.nextInt(5) + 1;
     }
 
     /**
@@ -58,12 +56,12 @@ public class Random {
      * nem léphet.
      * @return random StuckTime
      */
-    public int decideStuckTime(){
-        if(Main.proto.getIsDebug()==true){
+    public int decideStuckTime() {
+        if (Main.proto.getIsDebug()) {
             return 3;
         }
-        java.util.Random random= new java.util.Random();
-        return random.nextInt(5)+1;
+
+        return myRandom.nextInt(5) + 1;
     }
 
     /**
@@ -71,11 +69,11 @@ public class Random {
      * Ha 0, akkor a cső 0. indexre csúszik a játékos, egyébként az 1. indexre.
      * @return melyik indexű szomszédra lépjen a játékos
      */
-    public int decideSlipping(){
-        if(Main.proto.getIsDebug()==true){
+    public int decideSlipping() {
+        if (Main.proto.getIsDebug()) {
             return 0;
         }
-        int sz=(int)random()*100;
-        return sz%2;
+
+        return myRandom.nextInt(2);
     }
 }
