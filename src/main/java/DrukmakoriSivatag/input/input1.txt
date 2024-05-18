@@ -1,0 +1,3 @@
+load DamageDamageablePipe.dat debug 
+damage playerOnPipe
+state pipe

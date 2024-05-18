@@ -1,0 +1,4 @@
+load PropagateWater.dat debug
+dbgTickAll
+state waterTank
+plumberPoints

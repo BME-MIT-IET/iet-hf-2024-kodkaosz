@@ -1,0 +1,4 @@
+Pálya betöltése sikeres.
+Elem felvétele megtörtént.
+Pipe pipe neighbors:;isPickedUp:true;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Plumber plumber stuckCounter:0;pickedUpPipe:pipe;pickedUpPump:null;element:waterTank

@@ -1,0 +1,3 @@
+Pálya betöltése sikeres.
+Rongálás sikeres.
+Pipe pipe neighbors:waterSource,desert;isPickedUp:false;capacity:0;waterLevel:0;isDamaged:true;isSlippery:false;fixedTime:0;isSticky:false

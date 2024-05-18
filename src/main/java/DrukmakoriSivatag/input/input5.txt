@@ -1,0 +1,11 @@
+load PickUpPipeFromPump.dat debug 
+pickUpPipeEnd plumber 0
+state pipe
+state plumber
+connectPipeEnd plumber
+state pipe
+state plumber
+pickUpPipeEnd plumber 0
+move plumber 0
+move plumber 0
+pickUpPipeEnd plumber 0

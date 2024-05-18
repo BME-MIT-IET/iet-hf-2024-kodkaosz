@@ -1,0 +1,9 @@
+load RedirectPump.dat debug
+redirect playerOnPump damagedPipe endPipe1
+dbgTickAll
+state waterTank2
+redirect playerOnPump goodPipe endPipe2
+dbgTickAll
+state waterTank1
+state waterTank2
+redirect playerOnPump goodPipe goodPipe

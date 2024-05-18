@@ -1,0 +1,4 @@
+Desert desert neighbors:pipe;isPickedUp:false
+WaterTank waterTank neighbors:pipe;isPickedUp:false;waterLevel:0
+Pipe pipe neighbors:waterTank,desert;isPickedUp:false;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Plumber plumber stuckCounter:0;pickedUpPipe:null;PickedUpPump:null;element:waterTank

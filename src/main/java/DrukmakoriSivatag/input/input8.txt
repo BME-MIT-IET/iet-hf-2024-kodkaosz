@@ -1,0 +1,5 @@
+load PickUpPipeFromOtherElement.dat debug
+pickUp Pipe plumber
+pickUpPipeEnd plumber 0
+state pipe
+state plumber

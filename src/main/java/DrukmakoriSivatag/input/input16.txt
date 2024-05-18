@@ -1,0 +1,7 @@
+load MakeSticky.dat debug
+makeSticky saboteur
+state pipe
+move saboteur 0
+move victim 0
+move victim 1
+makeSticky saboteur

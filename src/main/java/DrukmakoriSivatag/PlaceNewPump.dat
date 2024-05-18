@@ -1,0 +1,7 @@
+Pipe pipe neighbors:pump,waterTank;isPickedUp:false;capacity:5;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+PumpTank pumpTank storedWater:0;capacity:5
+PumpTank pumpTank2 storedWater:0;capacity:5
+Pump newPump neighbors:null;isPickedUp:false;pumpTank:pumpTank;isDamaged:false;toPipeIdx:-1;fromPipeIdx:-1
+Pump pump neighbors:pipe;isPickedUp:false;pumpTank:pumpTank2;isDamaged:false;toPipeIdx:-1;fromPipeIdx:0
+WaterTank waterTank neighbors:pipe;isPickedUp:false;waterLevel:5
+Plumber plumber stuckCounter:0;pickedUpPipe:null;pickedUpPump:null;element:waterTank

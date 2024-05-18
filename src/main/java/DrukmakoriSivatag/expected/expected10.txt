@@ -1,0 +1,8 @@
+Pálya betöltése sikeres.
+Új pozíció: pipe1.
+Új pozíció: pump.
+Új pozíció: pipe2.
+Új pozíció: pipe2.
+Új pozíció: pump.
+Új pozíció: pipe3.
+Új pozíció: waterTank.

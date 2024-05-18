@@ -1,0 +1,6 @@
+Pálya betöltése sikeres.
+TickAll.
+Pipe pipe neighbors:waterTank,waterSource;isPickedUp:false;capacity:5;waterLevel:0;isDamaged:true;isSlippery:false;fixedTime:0;isSticky:false
+WaterTank waterTank neighbors:pipe;isPickedUp:false;waterLevel:0
+A szerelõk pontszáma: 0.
+A szabotõrök pontszáma: 5.

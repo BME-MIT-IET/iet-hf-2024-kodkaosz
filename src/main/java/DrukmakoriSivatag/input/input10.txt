@@ -1,0 +1,8 @@
+load PersonMoveToFree.dat debug
+move player 0
+move player 1
+move player 1
+move player 1
+move player 0
+move player 2
+move player 1

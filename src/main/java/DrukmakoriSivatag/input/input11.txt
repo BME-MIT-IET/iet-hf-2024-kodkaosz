@@ -1,0 +1,2 @@
+load PersonMoveToOccupied.dat debug
+move player 0

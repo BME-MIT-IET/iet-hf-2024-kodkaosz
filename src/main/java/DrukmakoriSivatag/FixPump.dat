@@ -1,0 +1,7 @@
+Pump pump neighbors:endPipe1,endPipe2;isPickedUp:false;pumpTank:pumpTank;isDamaged:false;toPipeIdx:1;fromPipeIdx:0
+Plumber playerOnPump stuckCounter:0;pickedUpPipe:null;pickedUpPump:null;element:pump
+Pipe endPipe1 neighbors:waterSource,pump;isPickedUp:false;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Pipe endPipe2 neighbors:pump,desert;isPickedUp:false;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false
+Desert desert neighbors:endPipe1,endPipe2;isPickedUp:false
+WaterSource waterSource neighbors:endPipe1;isPickedUp:false
+PumpTank pumpTank storedWater:0;capacity:0

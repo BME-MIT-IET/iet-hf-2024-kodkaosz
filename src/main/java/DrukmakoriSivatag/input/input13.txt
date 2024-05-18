@@ -1,0 +1,10 @@
+load SeepWaterFromPipeEnd.dat debug
+dbgCreatePipe waterTank
+state newPipe
+state waterTank
+plumberPoints
+saboteurPoints
+dbgTickAll
+state waterTank
+plumberPoints
+saboteurPoints

@@ -1,0 +1,4 @@
+Pálya betöltése sikeres.
+TickAll.
+WaterTank waterTank neighbors:pipe2;isPickedUp:false;waterLevel:5
+A szerelõk pontszáma: 5.

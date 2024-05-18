@@ -1,0 +1,5 @@
+Pálya betöltése sikeres.
+Elem elromolva.
+Pump pump neighbors:endPipe1,endPipe2;isPickedUp:false;isDamaged:true;toPipeIdx:1;fromPipeIdx:0
+Javítás sikeres.
+Pump pump neighbors:endPipe1,endPipe2;isPickedUp:false;isDamaged:false;toPipeIdx:1;fromPipeIdx:0

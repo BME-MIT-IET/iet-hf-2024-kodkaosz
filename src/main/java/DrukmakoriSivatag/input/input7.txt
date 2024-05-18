@@ -1,0 +1,6 @@
+load PickUpBothPipeEnds.dat debug
+pickUpPipeEnd plumber 0
+pickUpPipeEnd plumber2 0
+state pipe
+state plumber
+state plumber2

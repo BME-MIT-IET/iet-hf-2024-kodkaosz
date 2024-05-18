@@ -1,0 +1,5 @@
+load FixPump.dat debug
+dbgDamage Pump pump
+state pump
+repair playerOnPump
+state pump

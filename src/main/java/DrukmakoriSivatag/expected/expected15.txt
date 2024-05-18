@@ -1,0 +1,9 @@
+Pálya betöltése sikeres.
+Átirányítás sikeres.
+TickAll.
+WaterTank waterTank2 neighbors:endPipe2;isPickedUp:false;waterLevel:0
+Átirányítás sikeres.
+TickAll.
+WaterTank waterTank1 neighbors:endPipe1;isPickedUp:false;waterLevel:0
+WaterTank waterTank2 neighbors:endPipe2;isPickedUp:false;waterLevel:5
+Átirányítás sikertelen.
