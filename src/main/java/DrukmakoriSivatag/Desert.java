@@ -9,11 +9,6 @@ import java.util.Arrays;
 public class Desert extends PipelineElement {
 
     /**
-     * A Desert osztály paraméternélküli konstruktora.
-     */
-    public Desert() { }
-
-    /**
      * Az objektum állapotát egy megfelelő formátumú stringbe írja.
      * @return az objektum string formában
      */
