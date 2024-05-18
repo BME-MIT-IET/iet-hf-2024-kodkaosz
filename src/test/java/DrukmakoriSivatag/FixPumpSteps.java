@@ -7,12 +7,14 @@ import main.java.DrukmakoriSivatag.Plumber;
 import main.java.DrukmakoriSivatag.Pump;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class FixPumpSteps {
     private Pump pump;
     private Plumber plumber;
+
     @Given("^Plumber is  on a damaged pump$")
-    public void plumber_is_on_a_damaged_pump(){
+    public void plumber_is_on_a_damaged_pump() {
         plumber = new Plumber();
         pump = new Pump();
 
@@ -25,9 +27,10 @@ public class FixPumpSteps {
     public void plumber_fixes_the_pump() {
         plumber.fix();
     }
+
     @Then("^The pump is not damaged$")
-    public void the_pump_is_not_damaged()  {
-        boolean isDamaged= pump.getIsDamaged();
-        assertEquals(false, isDamaged);
+    public void the_pump_is_not_damaged() {
+        boolean isDamaged = pump.getIsDamaged();
+        assertFalse(isDamaged);
     }
 }

@@ -1,6 +1,7 @@
 Feature: MoveToFree
   Ez a teszteset a játékosok mozgását teszteli.
   A teszteset minden elemre való lépést teszteli, de egyelőre csak szabad elemek vannak.
+
   Scenario: Move to free
     Given Saboteur is  on the watertank
     When Saboteur moves to pipe1

@@ -4,6 +4,7 @@ Feature: PlaceNewPump
   Ez a teszteset azt is teszteli, hogy ha nincs a játékosnál egy felvett pumpa,
   akkor természetesen nem sikerül a letevés, illetve, ha már felvett a játékos egy pumpát,
   nem tud felvenni még egy pumpát.
+
   Scenario: Place new pump
     Given Plumber is  on the watertank
     When Plumber picks up pump

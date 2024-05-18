@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DamageFixPipeSteps {
     private Saboteur saboteur;
@@ -13,8 +13,9 @@ public class DamageFixPipeSteps {
 
     private Pump pump;
     private Plumber plumber;
+
     @Given("^Saboteur is  on a damageable pipe$")
-    public void saboteur_is_on_a_damageable_pipe(){
+    public void saboteur_is_on_a_damageable_pipe() {
         saboteur = new Saboteur();
         pipe = new Pipe();
         pipe.accept(saboteur);
@@ -22,7 +23,7 @@ public class DamageFixPipeSteps {
     }
 
     @Given("^Saboteur is  on a not damageable pipe$")
-    public void saboteur_is_on_a_not_damageable_pipe(){
+    public void saboteur_is_on_a_not_damageable_pipe() {
         saboteur = new Saboteur();
         pipe = new Pipe();
         pump = new Pump();
@@ -42,7 +43,7 @@ public class DamageFixPipeSteps {
     }
 
     @Given("^Plumber is  on a damaged pipe$")
-    public void plumber_is_on_a_damaged_pipe(){
+    public void plumber_is_on_a_damaged_pipe() {
         plumber = new Plumber();
         pipe = new Pipe();
 
@@ -50,6 +51,7 @@ public class DamageFixPipeSteps {
         pipe.accept(plumber);
         plumber.setPipelineElement(pipe);
     }
+
     @When("^Saboteur damages the pipe$")
     public void saboteur_damages_the_pipe() {
         saboteur.damagePipe();
@@ -59,21 +61,22 @@ public class DamageFixPipeSteps {
     public void plumber_fixes_the_pipe() {
         plumber.fix();
     }
+
     @Then("^The pipe is damaged$")
-    public void the_pipe_is_damaged()  {
-        boolean isDamaged= pipe.isDamaged();
-        assertEquals(true, isDamaged);
+    public void the_pipe_is_damaged() {
+        boolean isDamaged = pipe.isDamaged();
+        assertTrue(isDamaged);
     }
 
     @Then("^The pipe is not damaged$")
-    public void the_pipe_is_not_damaged()  {
-        boolean isDamaged= pipe.isDamaged();
-        assertEquals(false, isDamaged);
+    public void the_pipe_is_not_damaged() {
+        boolean isDamaged = pipe.isDamaged();
+        assertFalse(isDamaged);
     }
 
     @Then("^FixedTime is greater than 0$")
-    public void fixedTime_is_grater_than_0()  {
-    boolean fixTimeGraterThan0= pipe.getFixedTime()>0;
-        assertEquals(true, fixTimeGraterThan0);
+    public void fixedTime_is_grater_than_0() {
+        boolean fixTimeGraterThan0 = pipe.getFixedTime() > 0;
+        assertTrue(fixTimeGraterThan0);
     }
 }
