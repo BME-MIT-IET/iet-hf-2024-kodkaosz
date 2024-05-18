@@ -7,12 +7,7 @@ import static java.lang.Math.random;
  * elromlása és az új csövek generálása.
  */
 public class Random {
-    /**
-     * Random osztály paraméternélküli konstruktora.
-     */
-    public Random(){
 
-    }
     /**
      *  Egy random generált érték alapján eldönti, hogy elromoljon-e a pumpa, vagy sem, majd visszatér a döntéssel
      * @return true, ha elromoljon a pumpa, false, ha ne
