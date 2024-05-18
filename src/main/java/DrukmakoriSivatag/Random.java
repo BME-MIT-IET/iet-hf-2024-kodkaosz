@@ -13,7 +13,8 @@ public class Random {
     private final java.util.Random myRandom = new java.util.Random();
 
     /**
-     *  Egy random generált érték alapján eldönti, hogy elromoljon-e a pumpa, vagy sem, majd visszatér a döntéssel
+     * Egy random generált érték alapján eldönti, hogy elromoljon-e a pumpa, vagy sem, majd visszatér a döntéssel
+     *
      * @return true, ha elromoljon a pumpa, false, ha ne
      */
     public boolean decidePump() {
@@ -27,9 +28,10 @@ public class Random {
     /**
      * Egy random érték alapján eldönti, hogy létrejöjjön-e új cső a
      * ciszternánál,majd visszatér a döntéssel.
+     *
      * @return true, ha jöjjön létre új cső, false, ha ne
      */
-    public boolean decideNewPipe(){
+    public boolean decideNewPipe() {
         if (Main.proto.getIsDebug()) {
             return false; // ne jöjjenek létre random csövek, amikor nem szamitunk rajuk
         }
@@ -40,6 +42,7 @@ public class Random {
     /**
      * Egy random javítási időt generál egy csőnek és visszatér
      * vele. Ha egy csőnek a fixedTime értéke nem nulla, nem lehet kilyukasztani.
+     *
      * @return random javítási idő
      */
     public int decideFixedTime() {
@@ -54,6 +57,7 @@ public class Random {
      * Egy random időt generál egy játékosnak, ha egy ragadós
      * csőre lép, majd visszatér vele. Ha egy játékosnak a stuckTime értéke nem nulla,
      * nem léphet.
+     *
      * @return random StuckTime
      */
     public int decideStuckTime() {
@@ -67,6 +71,7 @@ public class Random {
     /**
      * Egy random 0 vagy 1 értéket generál, majd visszatér vele.
      * Ha 0, akkor a cső 0. indexre csúszik a játékos, egyébként az 1. indexre.
+     *
      * @return melyik indexű szomszédra lépjen a játékos
      */
     public int decideSlipping() {
