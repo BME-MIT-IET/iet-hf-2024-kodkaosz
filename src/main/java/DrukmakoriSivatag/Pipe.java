@@ -445,4 +445,8 @@ public class Pipe extends PipelineElement implements Tickable {
     }
 
     public int getFixedTime(){return this.fixedTime;}
+
+    public boolean getIsPickedUp(){
+        return this.isPickedUp;
+    }
 }

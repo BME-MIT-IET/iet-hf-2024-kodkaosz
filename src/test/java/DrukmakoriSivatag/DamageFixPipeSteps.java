@@ -7,7 +7,7 @@ import io.cucumber.java.en.When;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DamagePipeSteps {
+public class DamageFixPipeSteps {
     private Saboteur saboteur;
     private Pipe pipe;
 
@@ -40,9 +40,24 @@ public class DamagePipeSteps {
         pipe.accept(saboteur);
         saboteur.setPipelineElement(pipe);
     }
+
+    @Given("^Plumber is  on a damaged pipe$")
+    public void plumber_is_on_a_damaged_pipe(){
+        plumber = new Plumber();
+        pipe = new Pipe();
+
+        pipe.setIsDamaged(true);
+        pipe.accept(plumber);
+        plumber.setPipelineElement(pipe);
+    }
     @When("^Saboteur damages the pipe$")
     public void saboteur_damages_the_pipe() {
         saboteur.damagePipe();
+    }
+
+    @When("^Plumber fixes the pipe$")
+    public void plumber_fixes_the_pipe() {
+        plumber.fix();
     }
     @Then("^The pipe is damaged$")
     public void the_pipe_is_damaged()  {
