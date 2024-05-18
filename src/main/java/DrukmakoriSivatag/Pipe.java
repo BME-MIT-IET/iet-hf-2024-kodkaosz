@@ -443,4 +443,6 @@ public class Pipe extends PipelineElement implements Tickable {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
+    public int getFixedTime(){return this.fixedTime;}
 }
