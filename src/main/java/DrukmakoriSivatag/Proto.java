@@ -113,12 +113,6 @@ public class Proto {
     }};
 
     /**
-     * Konstruktor
-     */
-    public Proto() {
-    }
-
-    /**
      * Debug módban fut-e a játék
      *
      * @return isDebug értéke

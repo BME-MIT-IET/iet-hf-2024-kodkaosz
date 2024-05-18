@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Saboteur extends Person {
-    /**
-     * Az osztály konstruktora.
-     */
-    public Saboteur(){}
-
+    
     /**
      *
      * Statikus függvény.

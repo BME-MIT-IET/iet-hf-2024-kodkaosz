@@ -9,11 +9,6 @@ import java.util.Arrays;
 public class WaterSource extends PipelineElement implements Tickable {
 
     /**
-     * A WaterSource konstruktora
-     */
-    public WaterSource() {}
-
-    /**
      * Az objektum állapotát egy megfelelő formátumú stringbe írja.
      * @return az objektum string formában
      */

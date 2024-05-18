@@ -14,11 +14,6 @@ public class Plumber extends Person{
     public Pipe pickedUpPipe;
 
     /**
-     * Az osztály konstruktora.
-     */
-    public Plumber(){}
-
-    /**
      *
      * Statikus függvény.
      * A paraméterként kapott objektum állapotát beállítja a megadott ArrayListben szereplő értékeknek megfelelően.

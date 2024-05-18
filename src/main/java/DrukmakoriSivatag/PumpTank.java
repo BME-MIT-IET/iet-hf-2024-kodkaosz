@@ -11,12 +11,7 @@ public class PumpTank {
 
     int storedWater;
     int capacity;
-
-    /**
-     * A PumpTank osztály konstruktora.
-     */
-    public PumpTank() { }
-
+    
     /**
      * Az objektum állapotát egy megfelelő formátumú stringbe írja.
      * @return az objektum string formában
