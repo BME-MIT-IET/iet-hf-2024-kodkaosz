@@ -74,6 +74,7 @@ public class WaterSource extends PipelineElement implements Tickable {
      * @param qty: az átadni kívánt vízmennyiség
      * @return
      */
+    @Override
     public int propagateWater(PipelineElement from, int qty) {
 
         return 0;
