@@ -61,6 +61,7 @@ public class WaterSource extends PipelineElement implements Tickable {
      * @param p: elemre lépni szándékozó játékos
      * @return
      */
+    @Override
     public boolean accept(Person p) {
 
         return false;
