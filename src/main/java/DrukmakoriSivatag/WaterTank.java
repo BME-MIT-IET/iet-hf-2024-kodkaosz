@@ -12,10 +12,6 @@ public class WaterTank extends PipelineElement implements Tickable {
      */
     private int waterLevel;
     /**
-     * A véletlenszerűen bekövetkező eseményeket létrehozó Random objektum.
-     */
-    private final Random random = new Random();
-    /**
      * Referencia az egyetlen Game objektumra.
      */
     //private final Game game = (Game)Main.proto.getByName("g");
