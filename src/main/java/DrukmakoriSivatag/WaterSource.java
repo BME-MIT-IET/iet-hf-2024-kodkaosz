@@ -45,6 +45,7 @@ public class WaterSource extends PipelineElement implements Tickable {
      * önmagát és a lekérdezett kapacitást megadva paraméternek, pontosan annyi vizet juttat
      * a forrás a csőbe, amennyi elfér benne
      */
+    @Override
     public void tick() {
 
         for(PipelineElement pipelineElement : neighbors) {
