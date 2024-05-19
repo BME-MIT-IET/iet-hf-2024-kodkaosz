@@ -11,6 +11,7 @@ public class WaterTank extends PipelineElement implements Tickable {
      * A ciszternában lévő víz mennyisége.
      */
     private int waterLevel;
+
     /**
      * Akkor tér vissza true-val, ha sikeresen eltávolította a paraméterben megadott elemet a neighbor tömbből.
      * Ez akkor lehet sikeres, hogyha nem olyan csövet akar lecsatlakoztatni, amelyikből, vagy amelyikbe pumpál.
@@ -33,6 +34,7 @@ public class WaterTank extends PipelineElement implements Tickable {
      * @param i: Hányadik csövet szeretné lecsatlakoztatni
      * @return sikerült-e lecsatlakoztatni
      */
+    @Override
     public Pipe pickUpPipe(int i) {
         Pipe pickedUpPipe = (Pipe) getNeighborElement(i);
         if (this.disconnect(pickedUpPipe) && pickedUpPipe.getOtherNeighbor(this).disconnect(pickedUpPipe)) {
