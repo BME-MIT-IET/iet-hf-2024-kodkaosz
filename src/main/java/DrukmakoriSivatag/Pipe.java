@@ -210,8 +210,6 @@ public class Pipe extends PipelineElement implements Tickable {
             //newPipe szomszédai: p és neighbor0
             p.addNeighbor(newPipe);
             neighbor0.addNeighbor(newPipe);
-            //newPipe.addNeighbor(p);
-            //newPipe.addNeighbor(neighbor0);
 
             //uj pumpa to es from idx
             p.redirect(0, 1);
