@@ -312,7 +312,6 @@ public class Pipe extends PipelineElement implements Tickable {
     public void addNeighbor(PipelineElement element) {
         this.neighbors.add(element);
         element.neighbors.add(this);
-        //element.addNeighbor(this);
     }
 
     /**
