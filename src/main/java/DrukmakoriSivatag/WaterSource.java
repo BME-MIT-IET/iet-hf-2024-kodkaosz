@@ -35,7 +35,7 @@ public class WaterSource extends PipelineElement implements Tickable {
      */
     public static void setup(Object obj, ArrayList<String> options) {
 
-        PipelineElement.setup(obj, new ArrayList(options));
+        PipelineElement.setup(obj, new ArrayList<>(options));
         ((Game)Main.proto.getByName("g")).addTickable((Tickable)obj);
     }
 
