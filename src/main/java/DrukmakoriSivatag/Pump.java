@@ -60,7 +60,7 @@ public class Pump extends PipelineElement implements Tickable {
         String[] pipelineElementParams = new String[2];
         pipelineElementParams[0] = options.get(0);
         pipelineElementParams[1] = options.get(1);
-        PipelineElement.setup(obj, new ArrayList(Arrays.asList(pipelineElementParams)));
+        PipelineElement.setup(obj, new ArrayList<>(Arrays.asList(pipelineElementParams)));
 
         ((Pump)obj).setPumpTank((PumpTank)Main.proto.getByName(options.get(2)));
         ((Pump)obj).isDamaged = options.get(3) == "true" ? true : false;
