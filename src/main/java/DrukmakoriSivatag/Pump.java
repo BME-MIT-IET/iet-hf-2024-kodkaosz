@@ -13,7 +13,6 @@ public class Pump extends PipelineElement implements Tickable {
     boolean isDamaged;
     int toPipeIdx;
     int fromPipeIdx;
-    Random random;
     PumpTank pumpTank;
 
     /**
