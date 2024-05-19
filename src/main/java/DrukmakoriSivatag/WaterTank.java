@@ -12,11 +12,6 @@ public class WaterTank extends PipelineElement implements Tickable {
      */
     private int waterLevel;
     /**
-     * A véletlenszerűen bekövetkező eseményeket létrehozó Random objektum.
-     */
-    private final Random random = new Random();
-
-    /**
      * Akkor tér vissza true-val, ha sikeresen eltávolította a paraméterben megadott elemet a neighbor tömbből.
      * Ez akkor lehet sikeres, hogyha nem olyan csövet akar lecsatlakoztatni, amelyikből, vagy amelyikbe pumpál.
      *
