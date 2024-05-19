@@ -148,7 +148,6 @@ public class Pipe extends PipelineElement implements Tickable {
     @Override
     public int propagateWater(PipelineElement from, int qty) {
         if (isDamaged) {
-            //((Game)Main.proto.getByName("g")).addLostWater(Math.min(qty, capacity));
             return Math.min(qty, capacity);
         } else {
             PipelineElement temp = (PipelineElement) this.getOtherNeighbor(from);
