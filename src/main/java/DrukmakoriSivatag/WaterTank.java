@@ -12,16 +12,9 @@ public class WaterTank extends PipelineElement implements Tickable {
      */
     private int waterLevel;
     /**
-     * Referencia az egyetlen Game objektumra.
-     */
-    //private final Game game = (Game)Main.proto.getByName("g");
-
-    //
-    // teszt dolog
-    //
-    /**
      * Akkor tér vissza true-val, ha sikeresen eltávolította a paraméterben megadott elemet a neighbor tömbből.
      * Ez akkor lehet sikeres, hogyha nem olyan csövet akar lecsatlakoztatni, amelyikből, vagy amelyikbe pumpál.
+     *
      * @param p: Melyik csövet csatlakoztatjuk le
      * @return
      */
@@ -36,11 +29,12 @@ public class WaterTank extends PipelineElement implements Tickable {
 
     /**
      * Egy teljes cső felvételét megvalósító függvény.
+     *
      * @param i: Hányadik csövet szeretné lecsatlakoztatni
      * @return sikerült-e lecsatlakoztatni
      */
-    public Pipe pickUpPipe(int i){
-        Pipe pickedUpPipe = (Pipe)getNeighborElement(i);
+    public Pipe pickUpPipe(int i) {
+        Pipe pickedUpPipe = (Pipe) getNeighborElement(i);
         if (this.disconnect(pickedUpPipe) && pickedUpPipe.getOtherNeighbor(this).disconnect(pickedUpPipe)) {
             pickedUpPipe.setIsPickedUp(true);
             return pickedUpPipe;
@@ -48,12 +42,11 @@ public class WaterTank extends PipelineElement implements Tickable {
 
         return null;
     }
-    //
-    //tesztresz vege
-    //
+
     /**
      * Fájl input szerint beállítja a kapott objektumot.
-     * @param obj a beállítani kívánt objektum
+     *
+     * @param obj    a beállítani kívánt objektum
      * @param params a paramétereket stringként a megfelelő formában tartalmazó lista
      */
     public static void setup(Object obj, ArrayList<String> params) {
@@ -62,14 +55,15 @@ public class WaterTank extends PipelineElement implements Tickable {
         pipelineElementParams.add(params.get(1));
         PipelineElement.setup(obj, pipelineElementParams);
 
-        ((WaterTank)obj).waterLevel = Integer.parseInt(params.get(2));
-        ((Game)Main.proto.getByName("g")).addFinishedWater(((WaterTank) obj).waterLevel);
+        ((WaterTank) obj).waterLevel = Integer.parseInt(params.get(2));
+        ((Game) Main.proto.getByName("g")).addFinishedWater(((WaterTank) obj).waterLevel);
 
-        ((Game)Main.proto.getByName("g")).addTickable((Tickable)obj);
+        ((Game) Main.proto.getByName("g")).addTickable((Tickable) obj);
     }
 
     /**
      * Az objektum állapotát egy megfelelő formátumú stringbe írja.
+     *
      * @return az objektum string formában
      */
     @Override
@@ -92,6 +86,7 @@ public class WaterTank extends PipelineElement implements Tickable {
 
     /**
      * Létrehoz egy új pumpát a ciszternánál.
+     *
      * @return a létrejott Pump
      */
     public Pump createPump() {
@@ -102,12 +97,13 @@ public class WaterTank extends PipelineElement implements Tickable {
 
     /**
      * Létrehoz egy új csövet a ciszternánál.
+     *
      * @return a létrehozott Pipe
      */
     public Pipe createPipe() {
         Pipe p = new Pipe();
         Main.proto.addObject("newPipe", p);
-        p.addNeighbor(((Game)Main.proto.getByName("g")).getDesert());
+        p.addNeighbor(((Game) Main.proto.getByName("g")).getDesert());
         p.addNeighbor(this);
         p.setCapacity(5);
         return p;
@@ -127,7 +123,6 @@ public class WaterTank extends PipelineElement implements Tickable {
         //seepwater iteralas neighbors tombon
         for (PipelineElement p : this.neighbors) {
             int seepedWater = p.seepWater(this, waterLevel);
-            //((Game)Main.proto.getByName("g")).removeFinishedWater(seepedWater); // nem kell, mert így kétszer hívódna
             waterLevel -= seepedWater;
         }
 
@@ -141,6 +136,7 @@ public class WaterTank extends PipelineElement implements Tickable {
      * a Plumber pickUpPump() függvénye hívja meg, amikor új pumpát szeretne felvenni. Ilyenkor a függvény
      * létrehoz egy új Pump objektumot, majd meghívja a Plumber setPickedUpPump(Pump p) függvényét,
      * paraméterként az új Pumpot megadva.
+     *
      * @param p a hívó szerelő
      * @return a felvett pumpa objektum referenciája
      */
@@ -156,19 +152,21 @@ public class WaterTank extends PipelineElement implements Tickable {
      * Egy hozzá kapcsolódó Pipe hívja meg rajta. Híváskor a saját vízszintjéhez hozzááadja a beérkező (qty)
      * vízmennyiséget, majd a Game osztály addFinishedWater(int qty) függvényét meghívva frissíti a
      * Gameben feljegyzett vízmennyiséget.
+     *
      * @param from a hívó
-     * @param qty a beérkező vízmennyiség
+     * @param qty  a beérkező vízmennyiség
      * @return a sikeresen fogadott vízmennyiség
      */
     @Override
     public int propagateWater(PipelineElement from, int qty) {
-        ((Game)Main.proto.getByName("g")).addFinishedWater(qty);
+        ((Game) Main.proto.getByName("g")).addFinishedWater(qty);
         setWaterLevel(waterLevel + qty);
         return qty;
     }
 
     /**
      * Mindig true-val tér vissza, mert akárhányan állhatnak a ciszternán.
+     *
      * @param p a hívó, a csőre lépni kívánó karakter
      * @return always true, ide mindig lehet lépni
      */
@@ -179,6 +177,7 @@ public class WaterTank extends PipelineElement implements Tickable {
 
     /**
      * Setter a waterLevel attribútumhoz.
+     *
      * @param waterLevel beállítani kívánt érték.
      */
     public void setWaterLevel(int waterLevel) {
