@@ -41,14 +41,11 @@ public abstract class Person implements Tickable {
     }
 
     /**
-     * Visszatér az objektum aktuális állapotának a leírásával.
+     * Minden leszármazott implementálja, ezért lehet abstract
      *
-     * @return Az objektum állapota egy Stringbe leírva. Null-al tér vissza, leszármazottak felüldefiniálják.
+     * @return Az objektum aktuális állapotának a leírásával.
      */
-    @Override
-    public String toString() {
-        return null;
-    }
+    public abstract String toString();
 
     /**
      * Az element tagváltozóhoz tartozó getter függvény.

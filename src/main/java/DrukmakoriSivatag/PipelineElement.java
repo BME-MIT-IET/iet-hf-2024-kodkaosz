@@ -64,7 +64,7 @@ public abstract class PipelineElement {
     /**
      * Minden leszármazott implementálja, ezért lehet abstract
      *
-     * @return
+     * @return Az objektum aktuális állapotának a leírásával.
      */
     public abstract String toString();
 
