@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
+import java.util.logging.Logger;
 
 /**
  * Ez az osztály felelős a program megfelelő működtetéséért.
@@ -23,6 +24,11 @@ public class Proto {
          */
         void runFunction(ArrayList<String> options);
     }
+
+    /**
+     * Logger hibák logolására
+     */
+    Logger logger = Logger.getLogger(getClass().getName());
 
     /**
      * Szabványos bemenet olvasására használt BufferedReader
@@ -55,11 +61,11 @@ public class Proto {
      * A parancsokat tartalmazó map.
      * Megfelelő bemenet esetén innen kerül kiválasztása, hogy melyik fusson le.
      */
-    private final Map<String, FunctionReference> commands = new HashMap<String, FunctionReference>() {{
+    private final Map<String, FunctionReference> commands = new HashMap<>() {{
         put("load", x -> load(x));
-        put("save", x -> save(x));
+        put("save", x -> save());
         put("state", x -> state(x));
-        put("exit", x -> exit(x));
+        put("exit", x -> exit());
         put("move", x -> move(x));
         put("damage", x -> damage(x));
         put("repair", x -> repair(x));
@@ -70,10 +76,10 @@ public class Proto {
         put("redirect", x -> redirect(x));
         put("makeSlippery", x -> makeSlippery(x));
         put("makeSticky", x -> makeSticky(x));
-        put("plumberPoints", x -> plumberPoints(x));
-        put("saboteurPoints", x -> saboteurPoints(x));
+        put("plumberPoints", x -> plumberPoints());
+        put("saboteurPoints", x -> saboteurPoints());
         put("dbgTick", x -> dbgTick(x));
-        put("dbgTickAll", x -> dbgTickAll(x));
+        put("dbgTickAll", x -> dbgTickAll());
         put("dbgCreatePipe", x -> dbgCreatePipe(x));
         put("dbgCreatePump", x -> dbgCreatePump(x));
         put("dbgDamage", x -> dbgDamage(x));
@@ -84,7 +90,7 @@ public class Proto {
      * Objektumok név - konstruktor párosait tartalmazó map.
      * A fájl beolvasásakor kell a megfelelő típusú objektumok létrehozásához.
      */
-    private final Map<String, Supplier<Object>> constructors = new HashMap<String, Supplier<Object>>() {{
+    private final Map<String, Supplier<Object>> constructors = new HashMap<>() {{
         put("Desert", Desert::new);
         put("Pipe", Pipe::new);
         put("Plumber", Plumber::new);
@@ -101,7 +107,7 @@ public class Proto {
      * Objektumok név - setup függvény párosait tartalmazó map.
      * A fájl beolvasásakor kell a megfelelő típusú objektumok létrehozásához.
      */
-    private final Map<String, BiConsumer<Object, ArrayList<String>>> setups = new HashMap<String, BiConsumer<Object, ArrayList<String>>>() {{
+    private final Map<String, BiConsumer<Object, ArrayList<String>>> setups = new HashMap<>() {{
         put("Desert", Desert::setup);
         put("Pipe", Pipe::setup);
         put("Plumber", Plumber::setup);
@@ -165,7 +171,8 @@ public class Proto {
             try {
                 br.close();
             } catch (IOException ignored) {
-                System.err.println("BufferedReader bezárása sikertelen.");
+                logger.info("BufferedReader bezárása sikertelen.");
+
             }
             throw new RuntimeException(e);
         }
@@ -194,7 +201,7 @@ public class Proto {
             cmd = parseCommand(readCommand());
         }
         while (cmd != null && !isOver) {
-            commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<String>(cmd.subList(1, cmd.size())) : null);
+            commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<>(cmd.subList(1, cmd.size())) : null);
             cmd = parseCommand(readCommand());
         }
         if (cmd == null) {
@@ -249,7 +256,7 @@ public class Proto {
             BiConsumer<Object, ArrayList<String>> setup = setups.get(types.get(i));
             ArrayList<String> param = null;
             if (params.get(i) != null) {
-                param = new ArrayList<String>(Arrays.asList(params.get(i).split(";")));
+                param = new ArrayList<>(Arrays.asList(params.get(i).split(";")));
                 for (int j = param.size(); j > 0; --j) {
                     param.add(param.get(0).split(":")[1]);
                     param.remove(0);
@@ -263,10 +270,8 @@ public class Proto {
 
     /**
      * Kiírja minden objektum aktuális állapotát a kimenetre
-     *
-     * @param options jelen esetben nem foglalkozunk vele, az interface miatt kell
      */
-    public void save(ArrayList<String> options) {
+    public void save() {
         for (Object o : nameObjectMap.values()) {
             if (!getByObject(o).equals("g")) {   // a Game adatait nem írjuk ki
                 System.out.println(o.toString());
@@ -285,10 +290,8 @@ public class Proto {
 
     /**
      * Kilép az aktuális játékból
-     *
-     * @param options jelen esetben nem foglalkozunk vele, az interface miatt kell
      */
-    public void exit(ArrayList<String> options) {
+    public void exit() {
         isOver = true;
         System.out.println("Játék megszakítva.");
     }
@@ -464,19 +467,15 @@ public class Proto {
 
     /**
      * Kiírja a szerelők aktuális pontszámát.
-     *
-     * @param options jelen esetben nem foglalkozunk vele, az interface miatt kell
      */
-    public void plumberPoints(ArrayList<String> options) {
+    public void plumberPoints() {
         System.out.println("A szerelők pontszáma: " + ((Game) getByName("g")).getFinishedWater() + ".");
     }
 
     /**
      * Kiírja a szabotőrök aktuális pontszámát.
-     *
-     * @param options jelen esetben nem foglalkozunk vele, az interface miatt kell
      */
-    public void saboteurPoints(ArrayList<String> options) {
+    public void saboteurPoints() {
         System.out.println("A szabotőrök pontszáma: " + ((Game) getByName("g")).getLostWater() + ".");
     }
 
@@ -492,10 +491,8 @@ public class Proto {
 
     /**
      * Minden Tickable interfészt megvalósító objektumon meghívja a tick() függvényt.
-     *
-     * @param options jelen esetben nem foglalkozunk vele, az interface miatt kell
      */
-    public void dbgTickAll(ArrayList<String> options) {
+    public void dbgTickAll() {
         ((Game) getByName("g")).tickAll();
         System.out.println("TickAll.");
     }
