@@ -33,7 +33,7 @@ public class Proto {
     /**
      * Szabványos bemenet olvasására használt BufferedReader
      */
-    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     /**
      * Azt mondja meg, hogy a játék debug módban-e lett indítva.
@@ -235,10 +235,11 @@ public class Proto {
         ArrayList<String> names = new ArrayList<>();
         ArrayList<String> types = new ArrayList<>();
         ArrayList<String> params = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/DrukmakoriSivatag/" + options.get(0)))) {
+        try (BufferedReader bufferedReader = new BufferedReader(
+                new FileReader("src/main/resources/DrukmakoriSivatag/" + options.get(0)))) {
             String line;
             String[] cmd;
-            while ((line = br.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 cmd = line.trim().split(" ");
                 names.add(cmd[1]);
                 types.add(cmd[0]);
@@ -547,15 +548,5 @@ public class Proto {
     public void dbgSetLeakable(ArrayList<String> options) { //setFixedTime() a fgv, ha ugyanarra gondolunk
         ((Pipe) getByName(options.get(0))).setFixedTime(Integer.parseInt(options.get(1)));
         System.out.println("A cső nem lyukasztható ki ennyi ideig: " + options.get(1) + ".");
-    }
-
-    /**
-     * Bezárja az inputstreamet, ha meghívódik a destruktor
-     *
-     * @throws IOException ??
-     */
-    @Override
-    protected void finalize() throws IOException {
-        br.close();
     }
 }
