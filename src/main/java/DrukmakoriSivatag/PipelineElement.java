@@ -62,14 +62,11 @@ public abstract class PipelineElement {
     }
 
     /**
-     * toString metódus felüldefiniálása, minden leszármazott implementálja, itt üres függvény
+     * minden leszármazott implementálja, ezért lehet abstract
      *
-     * @return null
+     * @return
      */
-    @Override
-    public String toString() {
-        return null;
-    }
+    public abstract String toString();
 
     /**
      * Eltávolítja a paraméterként kapott Person objektumot a players
