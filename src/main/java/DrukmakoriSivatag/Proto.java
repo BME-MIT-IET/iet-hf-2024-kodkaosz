@@ -165,6 +165,7 @@ public class Proto {
             try {
                 br.close();
             } catch (IOException ignored) {
+                System.out.println("BufferedReader bezárása sikertelen.");
             }
             throw new RuntimeException(e);
         }
@@ -222,7 +223,7 @@ public class Proto {
         ArrayList<String> names = new ArrayList<>();
         ArrayList<String> types = new ArrayList<>();
         ArrayList<String> params = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/DrukmakoriSivatag/"+options.get(0)))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/DrukmakoriSivatag/" + options.get(0)))) {
             String line;
             String[] cmd;
             while ((line = br.readLine()) != null) {
