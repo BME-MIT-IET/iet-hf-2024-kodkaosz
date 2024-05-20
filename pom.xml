@@ -87,7 +87,12 @@
             <!-- JUnit 5 requires Surefire version 2.22.1 or higher -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
+		<version>2.12.4</version>
+		<configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
