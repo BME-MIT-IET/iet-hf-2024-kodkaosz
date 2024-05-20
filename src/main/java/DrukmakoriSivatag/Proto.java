@@ -61,62 +61,67 @@ public class Proto {
      * A parancsokat tartalmazó map.
      * Megfelelő bemenet esetén innen kerül kiválasztása, hogy melyik fusson le.
      */
-    private final Map<String, FunctionReference> commands = new HashMap<>() {{
-        put("load", x -> load(x));
-        put("save", x -> save());
-        put("state", x -> state(x));
-        put("exit", x -> exit());
-        put("move", x -> move(x));
-        put("damage", x -> damage(x));
-        put("repair", x -> repair(x));
-        put("pickUp", x -> pickUp(x));
-        put("pickUpPipeEnd", x -> pickUpPipeEnd(x));
-        put("connectPipeEnd", x -> connectPipeEnd(x));
-        put("addPump", x -> addPump(x));
-        put("redirect", x -> redirect(x));
-        put("makeSlippery", x -> makeSlippery(x));
-        put("makeSticky", x -> makeSticky(x));
-        put("plumberPoints", x -> plumberPoints());
-        put("saboteurPoints", x -> saboteurPoints());
-        put("dbgTick", x -> dbgTick(x));
-        put("dbgTickAll", x -> dbgTickAll());
-        put("dbgCreatePipe", x -> dbgCreatePipe(x));
-        put("dbgCreatePump", x -> dbgCreatePump(x));
-        put("dbgDamage", x -> dbgDamage(x));
-        put("dbgSetLeakable", x -> dbgSetLeakable(x));
-    }};
+    private final Map<String, FunctionReference> commands = new HashMap<>();
 
     /**
      * Objektumok név - konstruktor párosait tartalmazó map.
      * A fájl beolvasásakor kell a megfelelő típusú objektumok létrehozásához.
      */
-    private final Map<String, Supplier<Object>> constructors = new HashMap<>() {{
-        put("Desert", Desert::new);
-        put("Pipe", Pipe::new);
-        put("Plumber", Plumber::new);
-        put("Pump", Pump::new);
-        put("PumpTank", PumpTank::new);
-        put("Random", Random::new);
-        put("Saboteur", Saboteur::new);
-        put("Timer", Timer::new);
-        put("WaterSource", WaterSource::new);
-        put("WaterTank", WaterTank::new);
-    }};
+    private final Map<String, Supplier<Object>> constructors = new HashMap<>();
 
     /**
      * Objektumok név - setup függvény párosait tartalmazó map.
      * A fájl beolvasásakor kell a megfelelő típusú objektumok létrehozásához.
      */
-    private final Map<String, BiConsumer<Object, ArrayList<String>>> setups = new HashMap<>() {{
-        put("Desert", Desert::setup);
-        put("Pipe", Pipe::setup);
-        put("Plumber", Plumber::setup);
-        put("Pump", Pump::setup);
-        put("PumpTank", PumpTank::setup);
-        put("Saboteur", Saboteur::setup);
-        put("WaterSource", WaterSource::setup);
-        put("WaterTank", WaterTank::setup);
-    }};
+    private final Map<String, BiConsumer<Object, ArrayList<String>>> setups = new HashMap<>();
+
+    /**
+     * Konstruktor Mappek inicializálására
+     */
+    public Proto() {
+        commands.put("load", this::load);
+        commands.put("save", x -> save());
+        commands.put("state", this::state);
+        commands.put("exit", x -> exit());
+        commands.put("move", this::move);
+        commands.put("damage", this::damage);
+        commands.put("repair", this::repair);
+        commands.put("pickUp", this::pickUp);
+        commands.put("pickUpPipeEnd", this::pickUpPipeEnd);
+        commands.put("connectPipeEnd", this::connectPipeEnd);
+        commands.put("addPump", this::addPump);
+        commands.put("redirect", this::redirect);
+        commands.put("makeSlippery", this::makeSlippery);
+        commands.put("makeSticky", this::makeSticky);
+        commands.put("plumberPoints", x -> plumberPoints());
+        commands.put("saboteurPoints", x -> saboteurPoints());
+        commands.put("dbgTick", this::dbgTick);
+        commands.put("dbgTickAll", x -> dbgTickAll());
+        commands.put("dbgCreatePipe", this::dbgCreatePipe);
+        commands.put("dbgCreatePump", this::dbgCreatePump);
+        commands.put("dbgDamage", this::dbgDamage);
+        commands.put("dbgSetLeakable", this::dbgSetLeakable);
+
+        constructors.put("Desert", Desert::new);
+        constructors.put("Pipe", Pipe::new);
+        constructors.put("Plumber", Plumber::new);
+        constructors.put("Pump", Pump::new);
+        constructors.put("PumpTank", PumpTank::new);
+        constructors.put("Random", Random::new);
+        constructors.put("Saboteur", Saboteur::new);
+        constructors.put("Timer", Timer::new);
+        constructors.put("WaterSource", WaterSource::new);
+        constructors.put("WaterTank", WaterTank::new);
+
+        setups.put("Desert", Desert::setup);
+        setups.put("Pipe", Pipe::setup);
+        setups.put("Plumber", Plumber::setup);
+        setups.put("Pump", Pump::setup);
+        setups.put("PumpTank", PumpTank::setup);
+        setups.put("Saboteur", Saboteur::setup);
+        setups.put("WaterSource", WaterSource::setup);
+        setups.put("WaterTank", WaterTank::setup);
+    }
 
     /**
      * Debug módban fut-e a játék
