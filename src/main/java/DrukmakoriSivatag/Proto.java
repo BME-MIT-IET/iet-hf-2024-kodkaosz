@@ -165,7 +165,7 @@ public class Proto {
             try {
                 br.close();
             } catch (IOException ignored) {
-                System.out.println("BufferedReader bezárása sikertelen.");
+                System.err.println("BufferedReader bezárása sikertelen.");
             }
             throw new RuntimeException(e);
         }
