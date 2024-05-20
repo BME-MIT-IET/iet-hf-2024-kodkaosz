@@ -62,7 +62,7 @@ public abstract class PipelineElement {
     }
 
     /**
-     * minden leszármazott implementálja, ezért lehet abstract
+     * Minden leszármazott implementálja, ezért lehet abstract
      *
      * @return
      */
