@@ -35,19 +35,11 @@ public class Pipe extends PipelineElement implements Tickable {
      * Egy counter, 0 értéke esetén a cső kilyukasztható, bármi más esetben nem.
      */
     private int fixedTime;
-    /**
-     * Referencia az egyetlen Game objektumra.
-     */
-    //private Game game = (Game)Main.proto.getByName("g");
-
-    /**
-     * A Pipe osztály paraméter nélküli konstruktora.
-     */
-    public Pipe() {}
 
     /**
      * Fájl input szerint beállítja a kapott objektumot.
-     * @param obj a beállítani kívánt objektum
+     *
+     * @param obj    a beállítani kívánt objektum
      * @param params a paramétereket stringként a megfelelő formában tartalmazó lista
      */
     public static void setup(Object obj, ArrayList<String> params) {
@@ -56,18 +48,19 @@ public class Pipe extends PipelineElement implements Tickable {
         pipelineElementParams.add(params.get(1));
         PipelineElement.setup(obj, pipelineElementParams);
 
-        ((Pipe)obj).capacity = Integer.parseInt(params.get(2));
-        ((Pipe)obj).waterLevel = Integer.parseInt(params.get(3));
-        ((Pipe)obj).isDamaged = (params.get(4)).equals("true");
-        ((Pipe)obj).isSlippery = (params.get(5)).equals("true");
-        ((Pipe)obj).fixedTime = Integer.parseInt(params.get(6));
-        ((Pipe)obj).isSticky = params.get(7).equals("true");
+        ((Pipe) obj).capacity = Integer.parseInt(params.get(2));
+        ((Pipe) obj).waterLevel = Integer.parseInt(params.get(3));
+        ((Pipe) obj).isDamaged = (params.get(4)).equals("true");
+        ((Pipe) obj).isSlippery = (params.get(5)).equals("true");
+        ((Pipe) obj).fixedTime = Integer.parseInt(params.get(6));
+        ((Pipe) obj).isSticky = params.get(7).equals("true");
 
-        ((Game)Main.proto.getByName("g")).addTickable((Tickable)obj);
+        ((Game) Main.proto.getByName("g")).addTickable((Tickable) obj);
     }
 
     /**
      * Az objektum állapotát egy megfelelő formátumú stringbe írja.
+     *
      * @return az objektum string formában
      */
     @Override
@@ -111,7 +104,7 @@ public class Pipe extends PipelineElement implements Tickable {
     @Override
     public void tick() {
         if (isDamaged) {
-            ((Game)Main.proto.getByName("g")).addLostWater(waterLevel);
+            ((Game) Main.proto.getByName("g")).addLostWater(waterLevel);
             waterLevel = 0;
         }
 
@@ -147,14 +140,14 @@ public class Pipe extends PipelineElement implements Tickable {
      * értékként megadja, hogy mennyi vizet fogadott el. Erre azért van szükség, mert ennyi víz fogyott el a csőből,
      * tehát ismételten állítani kell a vízszinten, ezúttal a setWaterLevel(waterLevel-waterAccepted) függvényhívással.
      * A legkülső függvény is visszatér, a waterAccepted+waterLevel összeggel.
+     *
      * @param from a hívó
-     * @param qty az átadni kívánt vízmennyiség
+     * @param qty  az átadni kívánt vízmennyiség
      * @return a továbbítódótt/kifolyt vízmennyiség
      */
     @Override
     public int propagateWater(PipelineElement from, int qty) {
         if (isDamaged) {
-            //((Game)Main.proto.getByName("g")).addLostWater(Math.min(qty, capacity));
             return Math.min(qty, capacity);
         } else {
             PipelineElement temp = (PipelineElement) this.getOtherNeighbor(from);
@@ -168,6 +161,7 @@ public class Pipe extends PipelineElement implements Tickable {
     /**
      * Azt az információt használjuk ki, hogy a csöveknek pontosan két szomszédja van.
      * Megvizsgálja mindkét szomszédot, és azzal tér vissza, amelyik nem egyezik meg a függvényparaméterrel.
+     *
      * @param element a hívó szomszéd
      * @return a paraméterben megadottal ellentételes végen lévő szomszéd
      */
@@ -178,6 +172,7 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * Igaz vagy hamis értékkel tér vissza, attól függően, hogy áll-e valaki a csövön.
+     *
      * @return foglalt-e a cső
      */
     public boolean isNavigable() {
@@ -198,6 +193,7 @@ public class Pipe extends PipelineElement implements Tickable {
      * Az új csőnek még nincs egy szomszédja se, ezért először hozzáadja a neighbors-hoz a pickedUpPump-ot,
      * majd az eddig is meglévő pumpát. A pickedUpPump-ot pedig null-al kell egyenlővé tenni,
      * hogy ne lehessen ugyanazt a pumpát végtelenszer lerakni.
+     *
      * @param p a lerakni kívánt új pumpa
      * @return a művelet sikeressége
      */
@@ -214,8 +210,6 @@ public class Pipe extends PipelineElement implements Tickable {
             //newPipe szomszédai: p és neighbor0
             p.addNeighbor(newPipe);
             neighbor0.addNeighbor(newPipe);
-            //newPipe.addNeighbor(p);
-            //newPipe.addNeighbor(neighbor0);
 
             //uj pumpa to es from idx
             p.redirect(0, 1);
@@ -241,8 +235,9 @@ public class Pipe extends PipelineElement implements Tickable {
      * azonban az eredetileg kapott qty paraméter helyett a qty és a capacity tagváltozó minimumát adja át.
      * A metódus visszatér azzal a mennyiséggel amennyi az adott objektumon keresztül el tudott szivárogni
      * a külső függvényhívás szintén ugyanezzel az értékkel tér vissza.
+     *
      * @param from az elem, amelyik meghívja a függvényt
-     * @param qty az átadni kívánt vízmennyiség
+     * @param qty  az átadni kívánt vízmennyiség
      */
     @Override
     public int seepWater(PipelineElement from, int qty) {
@@ -252,15 +247,17 @@ public class Pipe extends PipelineElement implements Tickable {
     /**
      * Az ősből örökölt függvény, nincs megvalósítva.
      */
-    public void disconnect() {}
+    public void disconnect() {
+    }
 
     /**
-     *  Az ősosztály azonos nevű függvényének a felüldefiniálása.
+     * Az ősosztály azonos nevű függvényének a felüldefiniálása.
      * Ha a players tömb nem üres, akkor nem fogadja be, false-al tér vissza, mivel a csövön
      * egy időben csak egy ember állhat. Ellenkező esetben nem áll senki a csövön, szóval
      * befogadja a játékost. Amennyiben befogadja a játékost, akkor hozzáadja a Person
      * objektumot a players tömbhöz, és visszatér true-val, hogy a Person is tudja, hogy
      * beadhatja-e a csövet a setElement(PipelineElement element) függvénynek.
+     *
      * @param p a hívó
      * @return a lépés művelet sikeressége
      */
@@ -275,7 +272,7 @@ public class Pipe extends PipelineElement implements Tickable {
     }
 
     /**
-     *  cső befoltozásának a megvalósítása. Ha az isDamaged változó értéke
+     * cső befoltozásának a megvalósítása. Ha az isDamaged változó értéke
      * true, vagyis a cső valóban lyukas, csak akkor hajtódnak végre az objektum állapotát
      * állító események. Ekkor a setIsDamaged által false-ra állítja az isDamaged
      * tagváltozót, a Random osztály decideFixedTime() függvényével pedig eldönti, hogy
@@ -296,23 +293,25 @@ public class Pipe extends PipelineElement implements Tickable {
     /**
      * Az ősből örökölt függvény, üres, csak a Pump definiálja.
      */
-    public void pickUpPipeEnd() {}
+    public void pickUpPipeEnd() {
+    }
 
     /**
      * Az ősből örökölt függvény, üres, csak a Pump definiálja.
      */
-    public void connectPipeEnd() {}
+    public void connectPipeEnd() {
+    }
 
     /**
      * Hozzáadja a neighbors tömbjéhez a paraméterben megadott elemet,
      * majd felveszi szomszédnak önmagát a paraméter tömbjébe.
+     *
      * @param element az elem, amivel szomszédsági viszonyt szeretnénk kezdeményezni
      */
     @Override
     public void addNeighbor(PipelineElement element) {
         this.neighbors.add(element);
         element.neighbors.add(this);
-        //element.addNeighbor(this);
     }
 
     /**
@@ -354,6 +353,7 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * Csak ez az osztály implementálja nem üres függvénytörzzsel. Az isSticky változó értékével tér vissza.
+     *
      * @return isSticky
      */
     @Override
@@ -364,6 +364,7 @@ public class Pipe extends PipelineElement implements Tickable {
     /**
      * Csak ez az osztály implementálja nem üres függvénytörzzsel.
      * A isSlippery változó értékével tér vissza.
+     *
      * @return isSlippery
      */
     @Override
@@ -382,6 +383,7 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * Getter a capacity attribútumhoz.
+     *
      * @return capacity
      */
     public int getCapacity() {
@@ -390,6 +392,7 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * Getter a waterLevel attribútumohz.
+     *
      * @return waterLevel
      */
     public int getWaterLevel() {
@@ -398,6 +401,7 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * Setter a waterLevel attribútumhoz.
+     *
      * @param waterLevel beállítani kívánt érték
      */
     public void setWaterLevel(int waterLevel) {
@@ -406,6 +410,7 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * Getter az isDamaged attribútumhoz.
+     *
      * @return isDamaged
      */
     public boolean isDamaged() {
@@ -414,6 +419,7 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * Setter az isDamaged attribútumhoz.
+     *
      * @param damaged true/false
      */
     public void setIsDamaged(boolean damaged) {
@@ -422,6 +428,7 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * A fixedTime attribútumhoz tartozó setter.
+     *
      * @param fixedTime a beállítani kívént érték
      */
     public void setFixedTime(int fixedTime) {
@@ -430,6 +437,7 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * Setter az isSlippery adattaghoz.
+     *
      * @param slippery true / false
      */
     public void setIsSlippery(boolean slippery) {
@@ -438,15 +446,18 @@ public class Pipe extends PipelineElement implements Tickable {
 
     /**
      * Setter a capacity adattaghoz.
+     *
      * @param capacity a beállítani kívánt érték
      */
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
-    public int getFixedTime(){return this.fixedTime;}
+    public int getFixedTime() {
+        return this.fixedTime;
+    }
 
-    public boolean getIsPickedUp(){
+    public boolean getIsPickedUp() {
         return this.isPickedUp;
     }
 }

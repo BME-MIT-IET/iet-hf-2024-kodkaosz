@@ -13,13 +13,7 @@ public class Pump extends PipelineElement implements Tickable {
     boolean isDamaged;
     int toPipeIdx;
     int fromPipeIdx;
-    Random random;
     PumpTank pumpTank;
-
-    /**
-     * A Pump osztály konstruktora.
-     */
-    public Pump() { }
 
     /**
      * Az objektum állapotát egy megfelelő formátumú stringbe írja.
@@ -60,10 +54,10 @@ public class Pump extends PipelineElement implements Tickable {
         String[] pipelineElementParams = new String[2];
         pipelineElementParams[0] = options.get(0);
         pipelineElementParams[1] = options.get(1);
-        PipelineElement.setup(obj, new ArrayList(Arrays.asList(pipelineElementParams)));
+        PipelineElement.setup(obj, new ArrayList<>(Arrays.asList(pipelineElementParams)));
 
         ((Pump)obj).setPumpTank((PumpTank)Main.proto.getByName(options.get(2)));
-        ((Pump)obj).isDamaged = options.get(3) == "true" ? true : false;
+        ((Pump)obj).isDamaged = Boolean.parseBoolean(options.get(3));
         ((Pump)obj).toPipeIdx = Integer.parseInt(options.get(4));
         ((Pump)obj).fromPipeIdx = Integer.parseInt(options.get(5));
 
