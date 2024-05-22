@@ -107,12 +107,12 @@ public class Plumber extends Person {
      */
     @Override
     public boolean pickUpPump() {
-        if (pickedUpPump == null) {
-            Pump temp = element.pickUpPump(this);
-            setPickedUpPump(temp);
-            return true;
-        }
-        return false;
+        if (pickedUpPump != null)
+            return false;
+
+        Pump temp = element.pickUpPump(this);
+        setPickedUpPump(temp);
+        return true;
     }
 
     /**
@@ -126,13 +126,12 @@ public class Plumber extends Person {
      */
     @Override
     public boolean addPump() {
-        if (pickedUpPump != null && element.split(pickedUpPump)) {
-            pickedUpPump.setIsPickedUp(false);
-            setPickedUpPump(null);
-            return true;
-        }
+        if (pickedUpPump == null || !element.split(pickedUpPump))
+            return false;
 
-        return false;
+        pickedUpPump.setIsPickedUp(false);
+        setPickedUpPump(null);
+        return true;
     }
 
     /**
@@ -151,12 +150,11 @@ public class Plumber extends Person {
      */
     @Override
     public boolean pickUpPipeEnd(int idx) {
-        if (pickedUpPipe == null) {
-            setPickedUpPipe(element.pickUpPipeEnd(idx));
-            return pickedUpPipe != null;
-        }
+        if (pickedUpPipe != null)
+            return false;
 
-        return false;
+        setPickedUpPipe(element.pickUpPipeEnd(idx));
+        return pickedUpPipe != null;
     }
 
     /**
@@ -170,12 +168,11 @@ public class Plumber extends Person {
      */
     @Override
     public boolean pickUpPipe(int idx) {
-        if (pickedUpPipe == null) {
-            setPickedUpPipe(element.pickUpPipe(idx));
-            return pickedUpPipe != null;
-        }
+        if (pickedUpPipe != null)
+            return false;
 
-        return false;
+        setPickedUpPipe(element.pickUpPipe(idx));
+        return pickedUpPipe != null;
     }
 
     /**
@@ -191,11 +188,10 @@ public class Plumber extends Person {
      */
     @Override
     public boolean connectPipeEnd() {
-        if (pickedUpPipe != null && element.connectPipeEnd(pickedUpPipe)) {
-            setPickedUpPipe(null);
-            return true;
-        }
+        if (pickedUpPipe == null || !element.connectPipeEnd(pickedUpPipe))
+            return false;
 
-        return false;
+        setPickedUpPipe(null);
+        return true;
     }
 }
