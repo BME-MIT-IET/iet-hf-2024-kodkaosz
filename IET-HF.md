@@ -36,8 +36,12 @@ A dbg prefixű parancsok csak debug módban indított játékokon használhatók
 - Opciók: 
     - $object$: a kiíradnó objektum
 
-#### exit 
+#### endgame 
 - Leírás: Megszakítja az adott játékmenetet, a load paranccsal lehet új játékot indítani.
+- Opciók: —
+
+#### exit 
+- Leírás: Kilép az alkalmazásból
 - Opciók: —
 
 #### move $player$ $dir$
