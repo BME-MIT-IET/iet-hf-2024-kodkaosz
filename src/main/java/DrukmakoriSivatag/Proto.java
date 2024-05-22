@@ -173,6 +173,9 @@ public class Proto {
         String ret;
         try {
             ret = br.readLine();
+            while(ret !=null && ret.isEmpty()){
+                ret = br.readLine();
+            }
         } catch (IOException e) {
             try {
                 br.close();
@@ -207,9 +210,6 @@ public class Proto {
             cmd = parseCommand(readCommand());
         }
         while (cmd != null) {
-            while (cmd!=null && cmd.get(0).isEmpty()) {
-                cmd = parseCommand(readCommand());
-            }
             try {
                 commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<>(cmd.subList(1, cmd.size())) : null);
                 if(isOver) break;
