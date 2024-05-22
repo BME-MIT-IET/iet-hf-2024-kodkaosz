@@ -207,7 +207,7 @@ public class Proto {
             cmd = parseCommand(readCommand());
         }
         while (cmd != null) {
-            while (cmd.get(0).isEmpty()) {
+            while (cmd!=null && cmd.get(0).isEmpty()) {
                 cmd = parseCommand(readCommand());
             }
             try {
@@ -235,7 +235,9 @@ public class Proto {
     private void exit(ArrayList<String> x) {
         try {
             br.close();
-        } catch (Exception e){}
+        } catch (Exception e){
+            logger.info("Reader bezárása sikertelen");
+        }
         System.exit(0);
     }
 
@@ -313,7 +315,7 @@ public class Proto {
     /**
      * Kilép az aktuális játékból
      */
-    public void endGame(ArrayList<String> params) {
+    public void endGame(List<String> params) {
         isOver = true;
         System.out.println("Játék megszakítva.");
     }
