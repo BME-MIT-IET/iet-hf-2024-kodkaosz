@@ -126,15 +126,13 @@ public class Plumber extends Person {
      */
     @Override
     public boolean addPump() {
-        boolean success = false;
-        if (pickedUpPump != null) {
-            success = element.split(pickedUpPump);
-            if (success) {
-                pickedUpPump.setIsPickedUp(false);
-                setPickedUpPump(null);
-            }
+        if (pickedUpPump != null && element.split(pickedUpPump)) {
+            pickedUpPump.setIsPickedUp(false);
+            setPickedUpPump(null);
+            return true;
         }
-        return success;
+
+        return false;
     }
 
     /**
@@ -153,14 +151,12 @@ public class Plumber extends Person {
      */
     @Override
     public boolean pickUpPipeEnd(int idx) {
-        boolean success = false;
         if (pickedUpPipe == null) {
             setPickedUpPipe(element.pickUpPipeEnd(idx));
-            if (pickedUpPipe != null) {
-                success = true;
-            }
+            return pickedUpPipe != null;
         }
-        return success;
+
+        return false;
     }
 
     /**
@@ -174,14 +170,12 @@ public class Plumber extends Person {
      */
     @Override
     public boolean pickUpPipe(int idx) {
-        boolean success = false;
         if (pickedUpPipe == null) {
             setPickedUpPipe(element.pickUpPipe(idx));
-            if (pickedUpPipe != null) {
-                success = true;
-            }
+            return pickedUpPipe != null;
         }
-        return success;
+
+        return false;
     }
 
     /**
@@ -197,12 +191,11 @@ public class Plumber extends Person {
      */
     @Override
     public boolean connectPipeEnd() {
-        boolean success = false;
-        if (pickedUpPipe != null) {
-            success = element.connectPipeEnd(pickedUpPipe);
-            if (success)
-                setPickedUpPipe(null);
+        if (pickedUpPipe != null && element.connectPipeEnd(pickedUpPipe)) {
+            setPickedUpPipe(null);
+            return true;
         }
-        return success;
+
+        return false;
     }
 }
