@@ -313,7 +313,7 @@ public class Proto {
     /**
      * Kilép az aktuális játékból
      */
-    public void endGame() {
+    public void endGame(ArrayList<String> params) {
         isOver = true;
         System.out.println("Játék megszakítva.");
     }
