@@ -99,8 +99,6 @@ public class WaterTank extends PipelineElement implements Tickable {
 
     /**
      * Létrehoz egy új csövet a ciszternánál.
-     *
-     * @return a létrehozott Pipe
      */
     public void addNewEmptyPipe() {
         Pipe p = new Pipe();
