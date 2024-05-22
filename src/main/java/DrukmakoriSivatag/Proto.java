@@ -173,7 +173,7 @@ public class Proto {
         String ret;
         try {
             ret = br.readLine();
-            while(ret !=null && ret.isEmpty()){
+            while (ret != null && ret.isEmpty()) {
                 ret = br.readLine();
             }
         } catch (IOException e) {
@@ -212,7 +212,7 @@ public class Proto {
         while (cmd != null) {
             try {
                 commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<>(cmd.subList(1, cmd.size())) : null);
-                if(isOver) break;
+                if (isOver) break;
             } catch (Exception e) {
                 System.out.println("Hibás parancs");
             }
@@ -235,7 +235,7 @@ public class Proto {
     private void exit(ArrayList<String> x) {
         try {
             br.close();
-        } catch (Exception e){
+        } catch (Exception e) {
             logger.info("Reader bezárása sikertelen");
         }
         System.exit(0);
