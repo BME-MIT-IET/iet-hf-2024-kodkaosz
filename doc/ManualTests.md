@@ -17,9 +17,8 @@ state plumber
 
 Pálya betöltése sikeres\
 Elem felvétele megtörtént. \
-Pipe pipe
-neighbors:waterTank;isPickedUp:true;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false\
-Plumber plumberstuckCounter:0;pickedUpPipe:pipe;pickedUpPump:null;element:waterTank
+Pipe pipe neighbors:waterTank;isPickedUp:true;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0;isSticky:false\
+Plumber plumber stuckCounter:0;pickedUpPipe:pipe;pickedUpPump:null;element:waterTank
 
 ### Cső mindkét végének felvétele
 #### Leírás:
@@ -38,14 +37,11 @@ state plumber2
 #### Kimenet
 
 Pálya betöltése sikeres.\
-Csővég felvétele megtörtént.\
-Csővég felvétele megtörtént.\
-Pipe pipe
-neighbors:pump,pump2;isPickedUp:true;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0isSticky:false\
-Plumber plumber
-stuckCounter:0;pickedUpPipe:pipe;pickedUpPump:null;element:pump\
-Plumber plumber2
-stuckCounter:0;pickedUpPipe:pipe;pickedUpPump:null;element:pump2
+Csővég felvétele megtörtént.
+Csővég felvétele megtörtént.
+Pipe pipe neighbors:pump,pump2;isPickedUp:true;capacity:0;waterLevel:0;isDamaged:false;isSlippery:false;fixedTime:0isSticky:false\
+Plumber plumber stuckCounter:0;pickedUpPipe:pipe;pickedUpPump:null;element:pump\
+Plumber plumber2 stuckCounter:0;pickedUpPipe:pipe;pickedUpPump:null;element:pump2
 
 ### Cső felvétele másik mezőn állva
 #### Leírás:
@@ -130,14 +126,14 @@ dbgTickAll\
 state pipe\
 state waterTank\
 plumberPoints\
-sabouteurPoints
+saboteurPoints
 
 #### Kimenet
 
 Pálya betöltése sikeres.\
 TickAll.\
-Pipe pipe neighbors:waterSource,waterTank;isPickedUp:false;capacity\
-:5;waterLevel:0;isDamaged:true;isSlippery:false;fixedTime:0;isStic\
+Pipe pipe neighbors:waterSource,waterTank;isPickedUp:false;capacity
+:5;waterLevel:0;isDamaged:true;isSlippery:false;fixedTime:0;isStic
 ky:false\
 WaterTank waterTank neighbors:pipe;isPickedUp:false;waterLevel:0\
 A szerelők pontszáma: 0.\
@@ -171,14 +167,14 @@ WaterTank waterTank1 neighbors:endPipe1;isPickedUp:false;waterLevel:0\
 WaterTank waterTank2 neighbors:endPipe2;isPickedUp:false;waterLevel:5\
 Az átirányítás sikertelen.
 
-### Pumpa irányának átkapcsolása
+### Cső csússzóssá tétele
 #### Leírás:
 
 Ez a teszteset a csövek csúszóssá tételét teszteli. Egy játékos csúszóssá teszi a csövet,
 és lelép róla. Ezután a következő játékos rálép a csőre, és megnézzük, hogy
 átcsúszik-e. Ezen kívül azt is ellenőrizzük, hogy pumpát csúszóssá tud-e tenni a
-játékos.\
-A kiinduló állapotban a saboteur a pipe-on áll, majd onnan lép a pump1-re. A victim a pump2-ről indul. Először megpróbál ennek a 0. szomszédjára (pipe) lépni, ekkor csúszik a pump1-re. Ezután megpróbál a pump1 1. szomszédjára lépni, ami szintén a pipe, ami csúszós, emiatt annak a 0. szomszédjára (mert debug módban vagyunk,
+játékos.
+A kiinduló állapotban a saboteur a pipe-on áll, majd onnan lép a pump1-re. A victim a pump2-ről indul. Először meg\próbál ennek a 0. szomszédjára (pipe) lépni, ekkor csúszik a pump1-re. Ezután megpróbál a pump1 1. szomszédjára lépni, ami szintén a pipe, ami csúszós, emiatt annak a 0. szomszédjára (mert debug módban vagyunk,
 nem randomban) csúszik, tehát marad a pump1-en.
 
 #### Bemenet
@@ -188,7 +184,7 @@ state pipe\
 move saboteur 0\
 move victim 0\
 move victim 1\
-makeSticky saboteur
+makeSlippery saboteur
 
 #### Kimenet
 
