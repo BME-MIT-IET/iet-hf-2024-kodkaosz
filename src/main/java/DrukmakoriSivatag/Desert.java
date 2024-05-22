@@ -67,6 +67,7 @@ public class Desert extends PipelineElement {
     public int seepWater(PipelineElement from, int qty) {
         Game game = (Game) Main.proto.getByName("g");
         game.removeFinishedWater(qty);
+        game.addLostWater(qty);
         return qty;
     }
 
