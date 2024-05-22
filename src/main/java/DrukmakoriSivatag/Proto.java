@@ -513,7 +513,7 @@ public class Proto {
      * @param options ciszterna neve, amin létre akarjuk hozni a csövet
      */
     public void dbgCreatePipe(ArrayList<String> options) {
-        ((WaterTank) getByName(options.get(0))).createPipe();
+        ((WaterTank) getByName(options.get(0))).addNewEmptyPipe();
         System.out.println("Cső létrehozva.");
     }
 
