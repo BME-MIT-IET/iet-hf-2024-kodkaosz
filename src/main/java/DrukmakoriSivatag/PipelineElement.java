@@ -1,6 +1,7 @@
 package main.java.DrukmakoriSivatag;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Közös őse a hálózatot alkotó elemeknek, vagyis a ciszternáknak, forrásoknak, a sivatagnak, a
@@ -17,12 +18,12 @@ public abstract class PipelineElement {
     /**
      * Az elem szomszédjainak a halmaza.
      */
-    protected ArrayList<PipelineElement> neighbors;
+    protected List<PipelineElement> neighbors;
     /**
      * A játékosok akik rajta állnak az elemen. Az aktív elemek miatt
      * tömbnek kell lennie, hiszen azon több játékos is tartózkodhat egyszerre.
      */
-    protected ArrayList<Person> players;
+    protected List<Person> players;
     /**
      * Ennek a segítségével valósítja meg a pumpák egymástól független
      * véletlen időközönkénti elromlását, illetve az új csövek létrehozását.
@@ -50,10 +51,10 @@ public abstract class PipelineElement {
      * @param params String tömb, a tagváltozók értékével
      */
     static void setup(Object obj, ArrayList<String> params) {
-        String[] newneighbors = params.get(0).split(",");
-        if (!newneighbors[0].equals("null")) {
-            for (String newneighbor : newneighbors) {
-                ((PipelineElement) obj).neighbors.add((PipelineElement) Main.proto.getByName(newneighbor));
+        String[] newNeighbors = params.get(0).split(",");
+        if (!newNeighbors[0].equals("null")) {
+            for (String newNeighbor : newNeighbors) {
+                ((PipelineElement) obj).neighbors.add((PipelineElement) Main.proto.getByName(newNeighbor));
             }
         }
         ((PipelineElement) obj).isPickedUp = Boolean.parseBoolean(params.get(1));
@@ -96,12 +97,7 @@ public abstract class PipelineElement {
      * @return true, ha szomszédja, false, ha nem
      */
     public boolean isNeighbor(PipelineElement element) {
-        for (PipelineElement neighbor : neighbors) {
-            if (neighbor == element) {
-                return true;
-            }
-        }
-        return false;
+        return neighbors.contains(element);
     }
 
     /**
@@ -125,12 +121,9 @@ public abstract class PipelineElement {
      * @param newElement: az új szomszéd
      */
     public void addNeighbor(PipelineElement newElement) {
-        for (PipelineElement neighbor : neighbors) {
-            if (neighbor == newElement) {
-                return;
-            }
+        if (!neighbors.contains(newElement)) {
+            neighbors.add(newElement);
         }
-        neighbors.add(newElement);
     }
 
     /**
@@ -287,7 +280,7 @@ public abstract class PipelineElement {
      * @return random
      */
     public Random getRandom() {
-        return this.random;
+        return random;
     }
 
     /**
@@ -338,9 +331,7 @@ public abstract class PipelineElement {
     }
 
     public int getIndex(PipelineElement pipe) {
-
         for (int i = 0; i < neighbors.size(); ++i) {
-
             PipelineElement element = neighbors.get(i);
             if (pipe.equals(element)) {
                 return i;
