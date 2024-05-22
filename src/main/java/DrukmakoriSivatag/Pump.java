@@ -108,7 +108,7 @@ public class Pump extends PipelineElement implements Tickable {
             int fromIdx = getIndex(from);
             if(fromIdx == fromPipeIdx) {
 
-                int addedWater = pumpTank.addWater(qty);
+                pumpTank.addWater(qty);
                 Pipe toPipe = (Pipe)getNeighborElement(toPipeIdx);
                 int acceptedWater = toPipe.propagateWater(this, qty);
                 pumpTank.removeWater(acceptedWater);

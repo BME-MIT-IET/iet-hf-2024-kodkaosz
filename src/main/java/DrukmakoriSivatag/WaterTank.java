@@ -99,16 +99,13 @@ public class WaterTank extends PipelineElement implements Tickable {
 
     /**
      * Létrehoz egy új csövet a ciszternánál.
-     *
-     * @return a létrehozott Pipe
      */
-    public Pipe createPipe() {
+    public void addNewEmptyPipe() {
         Pipe p = new Pipe();
         Main.proto.addObject("newPipe", p);
         p.addNeighbor(((Game) Main.proto.getByName("g")).getDesert());
         p.addNeighbor(this);
         p.setCapacity(5);
-        return p;
     }
 
     /**
@@ -130,7 +127,7 @@ public class WaterTank extends PipelineElement implements Tickable {
 
         //random cső létrehozás
         if (random.decideNewPipe()) {
-            Pipe newPipe = createPipe();
+            addNewEmptyPipe();
         }
     }
 
