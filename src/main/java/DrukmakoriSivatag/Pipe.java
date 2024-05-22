@@ -50,10 +50,10 @@ public class Pipe extends PipelineElement implements Tickable {
 
         ((Pipe) obj).capacity = Integer.parseInt(params.get(2));
         ((Pipe) obj).waterLevel = Integer.parseInt(params.get(3));
-        ((Pipe) obj).isDamaged = (params.get(4)).equals("true");
-        ((Pipe) obj).isSlippery = (params.get(5)).equals("true");
+        ((Pipe) obj).isDamaged = Boolean.parseBoolean(params.get(4));
+        ((Pipe) obj).isSlippery = Boolean.parseBoolean(params.get(5));
         ((Pipe) obj).fixedTime = Integer.parseInt(params.get(6));
-        ((Pipe) obj).isSticky = params.get(7).equals("true");
+        ((Pipe) obj).isSticky = Boolean.parseBoolean(params.get(7));
 
         ((Game) Main.proto.getByName("g")).addTickable((Tickable) obj);
     }
@@ -73,26 +73,22 @@ public class Pipe extends PipelineElement implements Tickable {
         }
 
         output = output.concat(";isPickedUp:");
-        if (isPickedUp) output = output.concat("true");
-        else output = output.concat("false");
+        output = output.concat(String.valueOf(isPickedUp));
 
         output = output.concat(";capacity:" + capacity);
 
         output = output.concat(";waterLevel:" + waterLevel);
 
         output = output.concat(";isDamaged:");
-        if (isDamaged) output = output.concat("true");
-        else output = output.concat("false");
+        output = output.concat(String.valueOf(isDamaged));
 
         output = output.concat(";isSlippery:");
-        if (isSlippery) output = output.concat("true");
-        else output = output.concat("false");
+        output = output.concat(String.valueOf(isSlippery));
 
         output = output.concat(";fixedTime:" + fixedTime);
 
         output = output.concat(";isSticky:");
-        if (isSticky) output = output.concat("true");
-        else output = output.concat("false");
+        output = output.concat(String.valueOf(isSticky));
 
         return output;
     }
