@@ -86,7 +86,7 @@ public class Proto {
         commands.put("load", this::load);
         commands.put("save", x -> save());
         commands.put("state", this::state);
-        commands.put("exit", x -> exit());
+        commands.put("endgame", this::endGame);
         commands.put("move", this::move);
         commands.put("damage", this::damage);
         commands.put("repair", this::repair);
@@ -105,6 +105,7 @@ public class Proto {
         commands.put("dbgCreatePump", this::dbgCreatePump);
         commands.put("dbgDamage", this::dbgDamage);
         commands.put("dbgSetLeakable", this::dbgSetLeakable);
+        commands.put("exit", this::exit);
 
         constructors.put("Desert", Desert::new);
         constructors.put("Pipe", Pipe::new);
@@ -176,6 +177,9 @@ public class Proto {
         String ret;
         try {
             ret = br.readLine();
+            while (ret != null && ret.isEmpty()) {
+                ret = br.readLine();
+            }
         } catch (IOException e) {
             try {
                 br.close();
@@ -206,11 +210,16 @@ public class Proto {
     public void PlayGame() {
         reset();
         ArrayList<String> cmd = parseCommand(readCommand());
-        while (cmd != null && !cmd.get(0).equals("load")) {
+        while (cmd != null && !cmd.get(0).equals("load") && !cmd.get(0).equals("exit")) {
             cmd = parseCommand(readCommand());
         }
-        while (cmd != null && !isOver) {
-            commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<>(cmd.subList(1, cmd.size())) : null);
+        while (cmd != null) {
+            try {
+                commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<>(cmd.subList(1, cmd.size())) : null);
+                if (isOver) break;
+            } catch (Exception e) {
+                System.out.println("Hibás parancs");
+            }
             cmd = parseCommand(readCommand());
         }
         if (cmd == null) {
@@ -225,6 +234,15 @@ public class Proto {
         nameObjectMap.clear();
         objectNameMap.clear();
         isOver = false;
+    }
+
+    private void exit(ArrayList<String> x) {
+        try {
+            br.close();
+        } catch (Exception e) {
+            logger.info("Reader bezárása sikertelen");
+        }
+        System.exit(0);
     }
 
 
@@ -301,7 +319,7 @@ public class Proto {
     /**
      * Kilép az aktuális játékból
      */
-    public void exit() {
+    public void endGame(List<String> params) {
         isOver = true;
         System.out.println("Játék megszakítva.");
     }
