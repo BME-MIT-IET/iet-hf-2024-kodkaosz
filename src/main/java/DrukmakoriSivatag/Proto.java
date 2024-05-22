@@ -198,12 +198,13 @@ public class Proto {
         while (cmd != null && !cmd.get(0).equals("load")) {
             cmd = parseCommand(readCommand());
         }
-        while (cmd != null && !isOver) {
+        while (cmd != null) {
             while (cmd.get(0).isEmpty()) {
                 cmd = parseCommand(readCommand());
             }
             try {
                 commands.get(cmd.get(0)).runFunction(cmd.size() > 1 ? new ArrayList<String>(cmd.subList(1, cmd.size())) : null);
+                if(isOver) break;
             } catch (Exception e) {
                 System.out.println("Hibás parancs");
             }
