@@ -59,7 +59,7 @@ public class Proto {
         put("load", x -> load(x));
         put("save", x -> save(x));
         put("state", x -> state(x));
-        put("exit", x -> exit(x));
+        put("reset", x -> reset(x));
         put("move", x -> move(x));
         put("damage", x -> damage(x));
         put("repair", x -> repair(x));
@@ -78,7 +78,16 @@ public class Proto {
         put("dbgCreatePump", x -> dbgCreatePump(x));
         put("dbgDamage", x -> dbgDamage(x));
         put("dbgSetLeakable", x -> dbgSetLeakable(x));
+        put("dbgSetLeakable", x -> dbgSetLeakable(x));
+        put("exit", x -> exit(x));
     }};
+
+    private void exit(ArrayList<String> x) {
+        try {
+            br.close();
+        } catch (Exception e){}
+        System.exit(0);
+    }
 
     /**
      * Objektumok név - konstruktor párosait tartalmazó map.
@@ -195,7 +204,7 @@ public class Proto {
     public void PlayGame() {
         reset();
         ArrayList<String> cmd = parseCommand(readCommand());
-        while (cmd != null && !cmd.get(0).equals("load")) {
+        while (cmd != null && !cmd.get(0).equals("load") && !cmd.get(0).equals("exit")) {
             cmd = parseCommand(readCommand());
         }
         while (cmd != null) {
@@ -301,7 +310,7 @@ public class Proto {
      *
      * @param options jelen esetben nem foglalkozunk vele, az interface miatt kell
      */
-    public void exit(ArrayList<String> options) {
+    public void reset(ArrayList<String> options) {
         isOver = true;
         System.out.println("Játék megszakítva.");
     }
