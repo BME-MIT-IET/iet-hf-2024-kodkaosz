@@ -50,8 +50,7 @@ public abstract class PipelineElement {
      * @param params String tömb, a tagváltozók értékével
      */
     static void setup(Object obj, ArrayList<String> params) {
-        String[] newneighbors = new String[params.get(0).split(",").length];
-        newneighbors = params.get(0).split(",");
+        String[] newneighbors = params.get(0).split(",");
         if (!newneighbors[0].equals("null")) {
             for (String newneighbor : newneighbors) {
                 ((PipelineElement) obj).neighbors.add((PipelineElement) Main.proto.getByName(newneighbor));

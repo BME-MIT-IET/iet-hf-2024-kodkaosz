@@ -130,7 +130,7 @@ public class WaterTank extends PipelineElement implements Tickable {
 
         //random cső létrehozás
         if (random.decideNewPipe()) {
-            Pipe newPipe = createPipe();
+            createPipe();
         }
     }
 
