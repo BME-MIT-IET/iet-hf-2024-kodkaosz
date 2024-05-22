@@ -14,6 +14,10 @@ import java.util.logging.Logger;
  */
 public class Proto {
 
+    private static final String TURN_IS_OVER = "A játékos körének vége.";
+    private static final String SUCCESS = "sikeres.";
+    private static final String FAIL = "sikertelen.";
+
     /**
      * Parancsok hivatkozásához szükséges interface
      */
@@ -313,7 +317,7 @@ public class Proto {
             player.move(Integer.parseInt(options.get(1)));
             System.out.println("Új pozíció: " + getByObject(player.getPipelineElement()) + ".");
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
     }
 
@@ -326,10 +330,10 @@ public class Proto {
         Person player = (Person) getByName(options.get(0));
         Game game = (Game) getByName("g");
         if (game.isCurrentPlayer(player)) {
-            System.out.println("Rongálás " + (player.damagePipe() ? "sikeres." : "sikertelen."));
+            System.out.println("Rongálás " + (player.damagePipe() ? SUCCESS : FAIL));
             game.rotatePlayers();
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
     }
 
@@ -342,10 +346,10 @@ public class Proto {
         Person player = (Person) getByName(options.get(0));
         Game game = (Game) getByName("g");
         if (game.isCurrentPlayer(player)) {
-            System.out.println("Javítás " + (player.fix() ? "sikeres." : "sikertelen."));
+            System.out.println("Javítás " + (player.fix() ? SUCCESS : FAIL));
             game.rotatePlayers();
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
     }
 
@@ -364,10 +368,10 @@ public class Proto {
             } else {
                 success = player.pickUpPump();
             }
-            System.out.println("Elem felvétele " + (success ? "megtörtént." : "sikertelen."));
+            System.out.println("Elem felvétele " + (success ? "megtörtént." : FAIL));
             game.rotatePlayers();
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
     }
 
@@ -380,10 +384,10 @@ public class Proto {
         Person player = (Person) getByName(options.get(0));
         Game game = (Game) getByName("g");
         if (game.isCurrentPlayer(player)) {
-            System.out.println("Csővég felvétele " + (player.pickUpPipeEnd(Integer.parseInt(options.get(1))) ? "sikeres." : "sikertelen."));
+            System.out.println("Csővég felvétele " + (player.pickUpPipeEnd(Integer.parseInt(options.get(1))) ? SUCCESS : FAIL));
             game.rotatePlayers();
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
     }
 
@@ -396,10 +400,10 @@ public class Proto {
         Person player = (Person) getByName(options.get(0));
         Game game = (Game) getByName("g");
         if (game.isCurrentPlayer(player)) {
-            System.out.println("Csatlakoztatás " + (player.connectPipeEnd() ? "sikeres." : "sikertelen."));
+            System.out.println("Csatlakoztatás " + (player.connectPipeEnd() ? SUCCESS : FAIL));
             game.rotatePlayers();
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
     }
 
@@ -412,10 +416,10 @@ public class Proto {
         Person player = (Person) getByName(options.get(0));
         Game game = (Game) getByName("g");
         if (game.isCurrentPlayer(player)) {
-            System.out.println("Pumpa lerakása " + (player.addPump() ? "sikeres." : "sikertelen."));
+            System.out.println("Pumpa lerakása " + (player.addPump() ? SUCCESS : FAIL));
             game.rotatePlayers();
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
 
     }
@@ -432,10 +436,10 @@ public class Proto {
         int from = element.getIndex((PipelineElement) getByName(options.get(1)));
         int to = element.getIndex((PipelineElement) getByName(options.get(2)));
         if (game.isCurrentPlayer(player)) {
-            System.out.println("Átirányítás " + (player.redirectPump(from, to) ? "sikeres." : "sikertelen."));
+            System.out.println("Átirányítás " + (player.redirectPump(from, to) ? SUCCESS : FAIL));
             game.rotatePlayers();
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
     }
 
@@ -448,10 +452,10 @@ public class Proto {
         Person player = (Person) getByName(options.get(0));
         Game game = (Game) getByName("g");
         if (game.isCurrentPlayer(player)) {
-            System.out.println("Csúszóssá tevés  " + (player.makeSlippery() ? "sikeres." : "sikertelen."));
+            System.out.println("Csúszóssá tevés  " + (player.makeSlippery() ? SUCCESS : FAIL));
             game.rotatePlayers();
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
     }
 
@@ -464,10 +468,10 @@ public class Proto {
         Person player = (Person) getByName(options.get(0));
         Game game = (Game) getByName("g");
         if (game.isCurrentPlayer(player)) {
-            System.out.println("Ragadóssá tevés " + (player.makeSticky() ? "sikeres." : "sikertelen."));
+            System.out.println("Ragadóssá tevés " + (player.makeSticky() ? SUCCESS : FAIL));
             game.rotatePlayers();
         } else {
-            System.out.println("A játékos körének vége.");
+            System.out.println(TURN_IS_OVER);
         }
     }
 
